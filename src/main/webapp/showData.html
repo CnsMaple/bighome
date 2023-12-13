@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/mainPage_public.css">
+    <link rel="stylesheet" href="css/showData.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <title>index</title>
+</head>
+<body>
+<div id="app">
+    <div class="header">
+        <span class="header_left">客服热线：<a href="https://www.csdn.net/">400-xx-xxx</a></span>
+        <span class="header_right">
+<!--                <input type="button" class="login_button" value="登录"> -->
+            <!--                <input type="button" class="register_button" value="注册">-->
+                    <input type="button" @click="loginOut()" class="loginOut_button" value="退出登录">
+            </span>
+    </div>
+    <div class="warp">
+        <div class="warp_in">
+            <a class="page_style" id="page_1" href="./showData?page=showData">银行首页</a>
+            <a class="page_other" href="./showData?page=financing">银行理财</a>
+            <a class="page_other" href="./showData?page=notice">理财公告</a>
+        </div>
+    </div>
+    <div class="main">
+        <div class="body_top">
+            <div class="warp1">
+                <h2>{{name}}</h2>
+                <span>
+                    <img src="images/bg-security.png" alt="">
+                </span>
+            </div>
+            <div class="warp1_main">
+                <div class="warp1_left">
+                    <div class="data1">
+                        <div class="data1_data_first">
+                            <div class="data1_data_name">预期年化利率</div>
+                            <div class="data1_data_value">{{lv}}%</div>
+                        </div>
+                        <div class="data1_data">
+                            <div class="data1_data_name">投资期限（天）</div>
+                            <div class="data1_data_value">{{gaptime}}天</div>
+                        </div>
+                        <div class="data1_data">
+                            <div class="data1_data_name">起投金额（元）</div>
+                            <div class="data1_data_value">{{startmoney}}</div>
+                        </div>
+                    </div>
+                    <div class="data2">
+                        <div class="data2_up">
+                            <div class="data2_up_data">
+                                <div class="data2_up_data_name">项目起息日</div>
+                                <div class="data2_up_data_value">{{starttime}}</div>
+                            </div>
+                            <div class="data2_up_data">
+                                <div class="data2_up_data_name">项目到期日</div>
+                                <div class="data2_up_data_value">{{endtime}}</div>
+                            </div>
+                        </div>
+
+                        <div class="data2_down">
+                            <div class="data2_down_data">
+                                <div class="data2_down_data_name">递增金额</div>
+                                <div class="data2_down_data_value">{{barmoney}}</div>
+                            </div>
+                            <div class="data2_down_data">
+                                <div class="data2_down_data_name">投资截止时间</div>
+                                <div class="data2_down_data_value">{{countdown}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data3">
+                        <div style="white-space: nowrap">投标进度：</div>
+                        <div class="progress-bar">
+                            <div class="progress" :style="{ width: progress + '%' }"></div>
+                        </div>
+                        <div style="color: #1572cc">{{progress}}%</div>
+                    </div>
+                </div>
+                <div class="warp1_right">
+                    <div style="margin-top: 20px">剩余可投金额</div>
+                    <div class="endMoney">{{endmoney}}元</div>
+                    <div style="margin-bottom: 20px">
+                        账户余额：{{usermoney}}元
+                        <br>
+                        预计收益：<span style="color: red">{{userinputmoney}}</span>元
+                    </div>
+                    <div class="input_data">
+                        <input type="text" class="warp1_right_text" name="inputMoney" @keyup.enter="handleKeyPress()">
+                        <input type="button" class="warp1_right_button" value="立即投资" @click="InputMoney()">
+                    </div>
+                    <div class="red-text" style="color: red">{{message}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="body_foot">
+            <div class="warp2">
+                <a v-for="(label, key) in tabOptions" :key="key" @click="selectTab(key)"
+                     :class="{ active: selectedTab === key }"
+                     style="margin-left: 30px;margin-top: 10px;margin-bottom: 10px">{{label}}
+                </a>
+            </div>
+            <div class="body_foot_message" v-for="(content, key) in tabContents" :key="key"
+                 v-show="selectedTab === key">
+                <div v-html="content"></div>
+                <!-- <h2>XX银行人民币理财产品客户权益须知</h2>
+                <p>
+                    尊敬的客户:<br>
+                    理财非存款、产品有风险，投资须谨慎。为了保护您的合法权益，清在投资前认真问谈以下内容:<br>
+                    一:客户购买产品流程<br>
+                    如客户前往网,点购买理财产品:<br>
+                    (一) 资料清单<br>
+                    1、购买本理财产品的个人客户需要提供的资料清单 :<br>
+                    (1)本人有效身份证件<br>
+                    (2)本人的广发行理财通卡或存折<br>
+                    ...
+                </p> -->
+
+            </div>
+        </div>
+    </div>
+    <div class="foot" @click="openAbout()">
+        <div class="foot_warp">
+            <div class="foot_left1">
+                <dl>
+                    <dt>关于我们</dt>
+                    <dd>网站地图</dd>
+                    <dd>网站声明</dd>
+                    <dd>官方渠道</dd>
+                    <dd>联系我们</dd>
+                </dl>
+            </div>
+            <div class="foot_left2">
+                <dl>
+                    <dt>帮助中心</dt>
+                    <dd>新手指南</dd>
+                    <dd>常见问题</dd>
+                    <dd>网银工具</dd>
+                    <dd>收费标准</dd>
+                </dl>
+            </div>
+            <div class="foot_middle">
+                <dl>
+                    <dt>关注我们</dt>
+                    <dd><img src="images/微信.png" alt="">微信</dd>
+                    <dd><img src="images/新浪微博.png" alt="">新浪微博</dd>
+                </dl>
+            </div>
+            <div class="foot_right">
+                <div class="foot_right_warp">
+                    <div>客服热线(工作日&emsp13;08:00-20:00)</div>
+                    <h2>400-XX-XXXXX</h2>
+                    <div>service@xxxxx.com</div>
+                    <div>Copyright 2015 xxxx.com All Right Reserved</div>
+                    <div>粤ICP备xxxxxxx号x</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            name: "null",
+            lv: "null",
+            starttime: "null",
+            endtime: "null",
+            barmoney: "null",
+            startmoney: "null",
+            summoney: "null",
+            havemoney: "null",
+            usermoney: "null",
+            gaptime: "null",
+            endmoney: "null",
+            userinputmoney: "null",
+            countdown: "null",
+
+            progress: 0,
+            message: "",
+            selectedTab: 1,
+            tabOptions: {
+                tab1: "产品说明",
+                tab2: "风险提示",
+                tab3: "权益须知",
+            },
+            tabContents: {
+                tab1: "<h2 class='foot1'>XX银行人民币理财产品说明</h2><p>本理财产品存续期间，投资于【货币市场工具（含现金、银行存款、债券逆回购等）、银行间市场发行的债券类资产（含国债、金融债、央行票据、中期票据、短期融资券、超短期融资券、公司债、企业债、非公开定向债务融资工具、信贷资产支持证券、资产支持票据等）、证券交易所市场交易的债权性资产（公司债、企业债）、债券基金、货币市场基金、资产支持证券、资产收益权、银行理财产品（载明预期收益率或具有预期收益特征）、信托计划（含单一和集合信托）或信托受益权（载明预期收益率或具有预期收益特征）、证券公司资产管理计划（载明预期收益率或具有预期收益特征）、基金子公司专项资产管理计划（载明预期收益率或具有预期收益特征）、直接或间接投资于其他具有预期收益率或具有预期收益特征的产品（包括股权收益权、合伙企业有限合伙人份额）以及中国证监会认可的其他投资品种】等。</p>",
+                tab2: "<h2 class='foot2'>XX银行人民币理财产品风险提示</h2><p>尊敬的客户：<br>为了充分保障您的权益，我们特别提示您:<br>1、理财非存款，产品有风险，投资须谨慎。<br>2、理财产品过往业绩不代表其未来表现，不等于理财产品实际收益，投资须谨慎。业绩比较基准仅用于评价投资结果和测算业务报酬，<br>不代表管理人对本理财产品的收益承诺和保障。<br>3、产品详细信息以产品说明书等销售文件为准，请登录中国银行官方网站（www.boc.cn）查询。<br>4、请您在购买前确认该产品完全适合您的投资目标、投资预期和风险承受能力。</p>",
+                tab3: "<h2 class='foot3'>XX银行人民币理财产品客户权益须知</h2><p>尊敬的客户:<br>理财非存款、产品有风险，投资须谨慎。为了保护您的合法权益，清在投资前认真问谈以下内容:<br>一:客户购买产品流程<br>如客户前往网,点购买理财产品:<br>(一) 资料清单<br>1、购买本理财产品的个人客户需要提供的资料清单 :<br>(1)本人有效身份证件<br>(2)本人的广发行理财通卡或存折<br>... </p>",
+            },
+        },
+        methods: {
+
+            allMethodRun: function () {
+                this.getShowData();
+                this.selectedTab = Object.keys(this.tabOptions)[0];
+            },
+            selectTab: function (key) {
+                this.selectedTab = key
+            },
+            startProgress() {
+                this.progress = 0;
+                const interval = setInterval(() => {
+                    this.progress += 1;
+                    if (this.progress >= (this.havemoney / this.summoney * 100)) {
+                        clearInterval(interval);
+                    }
+                }, 10); // 每10毫秒增加1%
+            },
+            getShowData: function () {
+                console.log("getShowData")
+                let self = this;
+                let xhr = new XMLHttpRequest();
+                let currentUrl = window.location.href;
+                xhr.open('POST', "./showData", true);
+                xhr.setRequestHeader('Conent-type', 'application/json');
+                xhr.withCredentials = true;
+
+                // 等待服务器返回数据
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // console.log(xhr.responseText);
+                        let data = JSON.parse(xhr.responseText);
+                        console.log(data);
+                        self.name = data.name;
+                        // lv小数限制在两位
+                        self.lv = data.lv;
+                        // self.starttime = data.starttime;
+                        // self.endtime = data.endtime;
+                        // 数据库的datatime转换
+                        self.starttime = data.starttime.split(" ")[0];
+                        self.endtime = data.endtime.split(" ")[0];
+                        // starttime和endtime的间隔时间天
+                        self.gaptime = Math.ceil((new Date(self.endtime).getTime() - new Date(self.starttime).getTime()) / (1000 * 60 * 60 * 24));
+                        self.barmoney = data.barmoney;
+                        self.startmoney = data.startmoney;
+                        self.summoney = data.summoney;
+                        self.havemoney = data.havemoney;
+                        self.endmoney = data.summoney - data.havemoney;
+                        self.usermoney = data.usermoney;
+                        if (data.userinputmoney == null) {
+                            self.userinputmoney = 0;
+                        } else {
+                            self.userinputmoney = data.userinputmoney * data.lv / 100;
+                        }
+                        // 现在的时间到endtime的倒计时
+                        // self.nowtoendtime = Math.ceil((new Date(self.endtime).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
+                        self.startCountdown();
+                        self.startProgress();
+                    }
+                    // console.log(this.name);
+                    // console.log(this.lv);
+                    // console.log(this.starttime);
+                    // console.log(this.endtime);
+                    // console.log(this.barmoney);
+                    // console.log(this.startmoney);
+                    // console.log(this.summoney);
+                    // console.log(this.havemoney);
+                    // console.log(this.usermoney);
+                    // console.log(self.userinputmoney);
+                };
+                // 先发送数据
+                xhr.send(JSON.stringify({username: '11', name: "安富 200110期", type: "getShowData"}));
+            },
+            startCountdown() {
+                // 使用setInterval每秒更新一次倒计时
+                setInterval(() => {
+                    var currentTime = new Date().getTime();
+                    var timeDifference = new Date(this.endtime).getTime() - currentTime;
+
+                    if (timeDifference > 0) {
+                        var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                        // 格式化时间
+                        this.countdown = `${days}天${this.padZero(hours)}时${this.padZero(minutes)}分${this.padZero(seconds)}秒`;
+                    } else {
+                        this.countdown = "已截止";
+                    }
+                    // console.log("yes")
+                }, 1000);
+            },
+            padZero(num) {
+                return num < 10 ? "0" + num : num;
+            },
+
+            InputMoney: function () {
+                let self = this;
+                let xhr = new XMLHttpRequest();
+                xhr.open('POST', "./opsd", true);
+                xhr.setRequestHeader('Content-type', 'application/json');
+                // 等待服务器返回数据
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        self.getShowData();
+                        // 清空input
+                        document.querySelector('[name="inputMoney"]').value = "";
+                        // self.message = "";
+                        let data = JSON.parse(xhr.responseText);
+                        self.message = data.message;
+                    }
+                };
+                // 先发送数据
+                // 从input获取数据
+                let money = parseFloat(document.querySelector('[name="inputMoney"]').value);
+                // if (money < this.startmoney) {
+                //     this.message = "金额小于可投起始金额";
+                //     return;
+                // } else if (this.endmoney - money < 0) {
+                //     this.message = "金额大于可投剩余金额";
+                //     return;
+                // } else if (money > this.usermoney) {
+                //     this.message = "金额大于用户账户余额";
+                //     return;
+                // }else if (new Date(this.endtime).getTime() < new Date().getTime()) {
+                //     this.message = "已截止";
+                //     return;
+                // }
+                xhr.send(JSON.stringify({money: money}));
+            },
+            loginOut() {
+                let self = this;
+                let xhr = new XMLHttpRequest();
+                xhr.open('POST', "./lg", true);
+                xhr.setRequestHeader('Content-type', 'application/json');
+                // 等待服务器返回数据
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        window.location.reload();
+                    }
+                };
+                xhr.send(JSON.stringify({type: "loginOut"}));
+            },
+            handleKeyPress() {
+                this.InputMoney();
+            },
+            openAbout() {
+                window.open("./showData?page=about");
+            },
+        },
+    })
+    app.allMethodRun();
+    console.log("run all");
+</script>
+</body>
+</html>

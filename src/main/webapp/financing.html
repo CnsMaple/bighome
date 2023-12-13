@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/financing.css">
+    <link rel="stylesheet" href="css/mainPage_public.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <title>financing</title>
+</head>
+<body>
+
+<div id="app">
+    <div class="head">
+        <div class="header">
+            <span class="header_left">客服热线：<a href="https://www.csdn.net/">400-xx-xxx</a></span>
+            <span class="header_right">
+                    <!-- <input type="button" class="login_button" value="登录"> 
+                    <input type="button" class="register_button" value="注册"> -->
+                    <input type="button" @click="loginOut()" class="loginOut_button" value="退出登录">
+                </span>
+        </div>
+        <div class="warp">
+            <div class="warp_in">
+                <a id="page_1" href="./showData?page=showData">银行首页</a>
+                <a class="page_style page_other" href="./showData?page=financing">银行理财</a>
+                <a class="page_other" href="./showData?page=notice">理财公告</a>
+            </div>
+        </div>
+    </div>
+    <div class="Main">
+        <div class="seek">
+            <select v-model="selectedCategory" @change="search()">
+                <option value="">全部</option>
+                <option v-for="(item, index) in categoryData" :value="index">{{index}}</option>
+            </select>
+            <input type="text" v-model="searchCode" placeholder="请输入产品代码" @keyup.enter="handleKeyPress()">
+            <input type="button" value="查询" @click="search">
+            <input type="button" value="重置" @click="reset">
+        </div>
+        <div class="TableContainer">
+            <table class="Table">
+                <thead>
+                <tr>
+                    <th v-for="(item, index) in tableTitle">{{item}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(item, index) in filteredData" :key="index">
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ item.code }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.category }}</td>
+                    <td>{{ item.issuer }}</td>
+                    <td>{{ item.raiseMethod }}</td>
+                    <td>{{ item.salesArea }}</td>
+                    <td>{{ item.riskLevel }}</td>
+                    <td>{{ item.status }}</td>
+                    <td>{{ item.netValue }}</td>
+                    <td>{{ item.latestTip }}</td>
+                    <td>{{ item.details }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="foot" @click="openAbout()">
+        <div class="foot_warp">
+            <div class="foot_left1">
+                <dl>
+                    <dt>关于我们</dt>
+                    <dd>网站地图</dd>
+                    <dd>网站声明</dd>
+                    <dd>官方渠道</dd>
+                    <dd>联系我们</dd>
+                </dl>
+            </div>
+            <div class="foot_left2">
+                <dl>
+                    <dt>帮助中心</dt>
+                    <dd>新手指南</dd>
+                    <dd>常见问题</dd>
+                    <dd>网银工具</dd>
+                    <dd>收费标准</dd>
+                </dl>
+            </div>
+            <div class="foot_middle">
+                <dl>
+                    <dt>关注我们</dt>
+                    <dd><img src="images/微信.png" alt="">微信</dd>
+                    <dd><img src="images/新浪微博.png" alt="">新浪微博</dd>
+                </dl>
+            </div>
+            <div class="foot_right">
+                <div class="foot_right_warp">
+                    <div>客服热线(工作日&emsp13;08:00-20:00)</div>
+                    <h2>400-XX-XXXXX</h2>
+                    <div>service@xxxxx.com</div>
+                    <div>Copyright 2015 xxxx.com All Right Reserved</div>
+                    <div>粤ICP备xxxxxxx号x</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            selectedCategory: '',
+            searchCode: '',
+            tableTitle: [
+                '序号',
+                '产品代码',
+                '产品名称',
+                '产品类别',
+                '发行方',
+                '募集方式',
+                '销售区域',
+                '风险等级',
+                '产品状态',
+                '产品净值',
+                '最新提示',
+                '产品详情',
+            ],
+            tableData: [],
+            filteredData: [],
+            categoryData: [],
+        },
+        methods: {
+            search: function () {
+                // 在这里添加查询逻辑
+                console.log('查询产品类别:', this.selectedCategory);
+                console.log('搜索产品代码:', this.searchCode);
+
+                // 过滤数据
+                this.filteredData = this.tableData.filter(item =>
+                    (!this.selectedCategory || item.category === this.selectedCategory) &&
+                    (!this.searchCode || item.code.includes(this.searchCode))
+                );
+            },
+            reset: function () {
+                // 重置查询条件
+                this.selectedCategory = '';
+                this.searchCode = '';
+                // 恢复显示所有数据
+                this.filteredData = this.tableData;
+                // 对tableData进行分类，然后存储到categoryData中
+                this.categoryData = this.tableData.reduce((acc, cur) => {
+                    if (!acc[cur.category]) {
+                        acc[cur.category] = [];
+                    }
+                    acc[cur.category].push(cur);
+                    return acc;
+                }, {});
+            },
+            loginOut() {
+                let self = this;
+                let xhr = new XMLHttpRequest();
+                var currentUrl = window.location.href;
+                xhr.open('POST', "./lg", true);
+                xhr.setRequestHeader('Content-type', 'application/json');
+                // 等待服务器返回数据
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        window.location.reload();
+                    }
+                };
+                xhr.send(JSON.stringify({type: "loginOut"}));
+            },
+            getFinancingData() {
+                let self = this;
+                let xhr = new XMLHttpRequest();
+                var currentUrl = window.location.href;
+                xhr.open('GET', "./getFinancingData?type=financing", true);
+                xhr.setRequestHeader('Content-type', 'application/json');
+                xhr.withCredentials = true;
+                // 等待服务器返回数据
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // console.log(xhr.responseText);
+                        let data = JSON.parse(xhr.responseText);
+                        for (let i = 0; i < data.length; i++) {
+                            app.tableData.push(data[i]);
+                        }
+                        self.reset();
+                    }
+                };
+                xhr.send();
+            },
+            handleKeyPress() {
+                this.search();
+            },
+            openAbout() {
+                window.open("./showData?page=about");
+            },
+        }
+    });
+
+    app.getFinancingData();
+    app.filteredData = app.tableData;
+</script>
+</body>
+</html>

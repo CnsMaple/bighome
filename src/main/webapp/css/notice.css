@@ -1,0 +1,63 @@
+#header {
+    display: flex;
+    margin: 0 auto;
+    width: 75%;
+    padding: 5px;
+}
+
+#header h1 {
+    font-size: 25px;
+}
+
+#header img {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+}
+
+.underline_header {
+    width: 75%; /* 设置水平线的长度，可以根据需要调整 */
+    margin: 0 auto; /* 将水平线居中显示 */
+}
+
+#main {
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*height: 100vh; !* 100% 窗口高度 *!*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+}
+
+#main_index {
+    width: 75%;
+    margin: 10px auto;
+    list-style: none; /* 移除默认列表样式 */
+    padding: 0; /* 移除默认的内边距 */
+    display: flex; /* 使用弹性盒子布局 */
+    flex-wrap: wrap; /* 允许换行 */
+    justify-content: start;
+    align-items: center;
+}
+
+#main_index li {
+    list-style: none; /* 移除默认列表样式 */
+    padding: 10px; /* 调整小盒子的内边距 */
+    border: 1px solid #ccc; /* 添加边框，以区分小盒子 */
+}
+
+.yearselected,
+#main_index li:hover {
+    background-color: #e8313e; /* 设置鼠标悬停时的背景颜色 */
+    color: white; /* 设置文字颜色为白色，以提高可读性 */
+}
+
+.notice-item {
+    margin: 0 auto;
+    width: 75%;
+    /*margin-top: 10px;*/
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px; /* 根据需要调整通知之间的间距 */
+}

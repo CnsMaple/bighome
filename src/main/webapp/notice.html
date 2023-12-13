@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/mainPage_public.css">
+    <link rel="stylesheet" href="css/notice.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <title>notice</title>
+</head>
+<body>
+<div id="app">
+    <div class="head">
+        <div class="header">
+            <span class="header_left">客服热线：<a href="https://www.csdn.net/">400-xx-xxx</a></span>
+            <span class="header_right">
+<!--                     <input type="button" class="login_button" value="登录">-->
+                <!--                    <input type="button" class="register_button" value="注册">-->
+                    <input type="button" @click="loginOut()" class="loginOut_button" value="退出登录">
+            </span>
+        </div>
+        <div class="warp">
+            <div class="warp_in">
+                <a id="page_1" href="./showData?page=showData">银行首页</a>
+                <a class="page_other" href="./showData?page=financing">银行理财</a>
+                <a class="page_style page_other" href="./showData?page=notice">理财公告</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="main">
+        <!-- 成立公告字体 -->
+        <div id="header">
+            <h1>成立公告</h1>
+            <img src="images/分享.png" alt="">
+        </div>
+        <hr class="underline_header">
+        <!-- 年份索引 -->
+        <ul id="main_index">
+            <li v-for="item in gridItems" @click="generateNoticeItems(item.year)" :class="{ 'yearselected': nowYear === item.year }">{{item.year}}</li>
+        </ul>
+        <!-- 具体公告 -->
+        <div class="notice-item" v-for="notice in noticeData">
+            <div class="notice-item_left">{{notice.notice}}（理财编号：{{notice.code}}）成立公告</div>
+            <div class="notice-item_right">{{notice.time}}</div>
+        </div>
+    </div>
+
+    <div class="foot" @click="openAbout()">
+        <div class="foot_warp">
+            <div class="foot_left1">
+                <dl>
+                    <dt>关于我们</dt>
+                    <dd>网站地图</dd>
+                    <dd>网站声明</dd>
+                    <dd>官方渠道</dd>
+                    <dd>联系我们</dd>
+                </dl>
+            </div>
+            <div class="foot_left2">
+                <dl>
+                    <dt>帮助中心</dt>
+                    <dd>新手指南</dd>
+                    <dd>常见问题</dd>
+                    <dd>网银工具</dd>
+                    <dd>收费标准</dd>
+                </dl>
+            </div>
+            <div class="foot_middle">
+                <dl>
+                    <dt>关注我们</dt>
+                    <dd><img src="images/微信.png" alt="">微信</dd>
+                    <dd><img src="images/新浪微博.png" alt="">新浪微博</dd>
+                </dl>
+            </div>
+            <div class="foot_right">
+                <div class="foot_right_warp">
+                    <div>客服热线(工作日&emsp13;08:00-20:00)</div>
+                    <h2>400-XX-XXXXX</h2>
+                    <div>service@xxxxx.com</div>
+                    <div>Copyright 2015 xxxx.com All Right Reserved</div>
+                    <div>粤ICP备xxxxxxx号x</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            gridItems: [],
+            noticeData: [],
+            nowYear: "",
+        },
+        methods: {
+            loginOut() {
+                let self = this;
+                let xhr = new XMLHttpRequest();
+                var currentUrl = window.location.href;
+                xhr.open('POST', "./lg", true);
+                xhr.setRequestHeader('Content-type', 'application/json');
+                // 等待服务器返回数据
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        window.location.reload();
+                    }
+                };
+                xhr.send(JSON.stringify({type: "loginOut"}));
+            },
+            generateGridItems() {
+                let self = this;
+                let xhr = new XMLHttpRequest();
+                var currentUrl = window.location.href;
+                xhr.open('GET', "./getFinancingData?type=year", true);
+                xhr.setRequestHeader('Content-type', 'application/json');
+                xhr.withCredentials = true;
+                // 等待服务器返回数据
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        console.log(xhr.responseText);
+                        let data = JSON.parse(xhr.responseText);
+                        self.gridItems = [];
+                        for (let i = 0; i < data.length; i++) {
+                            app.gridItems.push(data[i]);
+                        }
+                        if (self.gridItems.length > 0) {
+                            self.generateNoticeItems(self.gridItems[0].year);
+                        }
+                    }
+                };
+                xhr.send();
+            },
+            generateNoticeItems(year) {
+                if (year === undefined) {
+                    year = this.gridItems[0].year;
+                }
+                let self = this;
+                self.nowYear = year;
+                let xhr = new XMLHttpRequest();
+                var currentUrl = window.location.href;
+                xhr.open('GET', "./getFinancingData?type=notice&year=" + year, true);
+                xhr.setRequestHeader('Content-type', 'application/json');
+                xhr.withCredentials = true;
+                // 等待服务器返回数据
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        console.log(xhr.responseText);
+                        self.noticeData = [];
+                        let data = JSON.parse(xhr.responseText);
+                        for (let i = 0; i < data.length; i++) {
+                            app.noticeData.push(data[i]);
+                        }
+                    }
+                };
+                xhr.send();
+            },
+            openAbout() {
+                window.open("./showData?page=about");
+            },
+        }
+    });
+    app.generateGridItems();
+    // console.log(app);
+    // console.log(app.getGridItems());
+    app.generateNoticeItems();
+</script>
+</body>
+</html>

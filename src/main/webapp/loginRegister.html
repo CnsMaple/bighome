@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>登陆注册页面</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+</head>
+
+<body>
+<div class="content" id="app">
+    <!--    <form action="/bighome/login" method="post">-->
+    <div class="form sign-in">
+        <h2>欢迎回来</h2>
+        <label>
+            <span>用户名</span>
+            <input type="text" name="loginUsername"/>
+        </label>
+        <label>
+            <span>密码</span>
+            <input type="password" name="loginPassword" @keyup.enter="handleKeyPress('login')"/>
+            <p><span class="red-text" style="color: red">{{redText}}</span></p>
+            <p><span class="green-text" style="color: green">{{greenText}}</span></p>
+        </label>
+        <!--                <p class="forgot-pass"><a href="javascript:">忘记密码？</a></p>-->
+        <button type="submit" class="submit" @click="loginAction">登 录</button>
+        <!--<button type="button" class="fb-btn">使用 <span>微信</span> 帐号登录</button>-->
+    </div>
+    <!--    </form>-->
+    <div class="sub-cont">
+        <div class="img">
+            <div class="img__text m--up">
+                <h2>还未注册？</h2>
+                <p>立即注册，发现大量机会！</p>
+            </div>
+            <div class="img__text m--in">
+                <h2>已有帐号？</h2>
+                <p>有帐号就登录吧，好久不见了！</p>
+            </div>
+            <div class="img__btn" @click="buttonAction">
+                <span class="m--up">注 册</span>
+                <span class="m--in">登 录</span>
+            </div>
+        </div>
+        <!--        <form action="/bighome/register" method="post">-->
+        <div class="form sign-up">
+            <h2>立即注册</h2>
+            <label>
+                <span>用户名</span>
+                <input type="text" name="registerUsername"/>
+            </label>
+            <!--                    <label>-->
+            <!--                        <span>邮箱</span>-->
+            <!--                        <input type="email" />-->
+            <!--                    </label>-->
+            <label>
+                <span>密码</span>
+                <input type="password" name="registerPassword" @keyup.enter="handleKeyPress('register')"/>
+                <p><span class="red-text" style="color: red">{{redText}}</span></p>
+                <p><span class="green-text" style="color: green">{{greenText}}</span></p>
+            </label>
+            <button type="submit" class="submit" @click="registerAction">注 册</button>
+            <!--<button type="button" class="fb-btn">使用 <span>微信</span> 帐号注册</button>!-->
+        </div>
+        <!--        </form>-->
+    </div>
+</div>
+
+<!--<script src="js/script.js"></script>-->
+<script src="js/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            greenText: "",
+            redText: "",
+        },
+        methods: {
+            loginAction: function () {
+                this.redText = "";
+                this.greenText = "";
+                let self = this;
+                let xhr = new XMLHttpRequest();
+                var currentUrl = window.location.href;
+                xhr.open('POST', "./lg", true);
+                xhr.setRequestHeader('Content-type', 'application/json');
+                // 等待服务器返回数据
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // console.log(xhr.responseText);
+                        let data = JSON.parse(xhr.responseText);
+                        if (data.status === "success") {
+                            // alert("登录成功" + data.message)
+                            // this.greenText = data.message;
+                            self.greenText = data.message;
+                            // 去新网址
+                            window.location.href = "./showData";
+                            window.location.reload();
+                        } else {
+                            // alert("登录失败" + data.message)
+                            // this.redText = data.message;
+                            self.redText = data.message;
+                        }
+                    }
+                };
+                // 先发送数据
+                // 从input获取数据
+                let username = document.querySelector('[name="loginUsername"]').value;
+                let password = document.querySelector('[name="loginPassword"]').value;
+                xhr.send(JSON.stringify({username: username, password: password, type: "login"}));
+            },
+            buttonAction: function () {
+                this.redText = "";
+                this.greenText = "";
+                document.querySelector('.content').classList.toggle('s--signup')
+            },
+            registerAction: function () {
+                this.redText = "";
+                this.greenText = "";
+                let self = this;
+                let xhr = new XMLHttpRequest();
+                var currentUrl = window.location.href;
+                xhr.open('POST', "./lg", true);
+                xhr.setRequestHeader('Content-type', 'application/json');
+                // 等待服务器返回数据
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // console.log(xhr.responseText);
+                        let data = JSON.parse(xhr.responseText);
+                        if (data.status === "success") {
+                            // alert("注册成功" + data.message)
+                            self.greenText = data.message;
+                        } else {
+                            // alert("注册失败" + data.message)
+                            self.redText = data.message;
+                        }
+                    }
+                };
+                // 先发送数据
+                // 从input获取数据
+                let username = document.querySelector('[name="registerUsername"]').value;
+                let password = document.querySelector('[name="registerPassword"]').value;
+                if (username === "" || password === "") {
+                    self.redText = "用户名或密码不能为空";
+                    return;
+                }
+                xhr.send(JSON.stringify({username: username, password: password, type: "register"}));
+            },
+            handleKeyPress(type) {
+                if (type === "login") {
+                    this.loginAction();
+                } else if (type === "register") {
+                    this.registerAction();
+                }
+            }
+        }
+    })
+</script>
+</body>
+
+</html>

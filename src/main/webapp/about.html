@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Readme</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet"
+          href="file:///c:\Users\13709\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.11\crossnote\dependencies\katex\katex.min.css">
+
+
+    <style>
+        code[class*=language-], pre[class*=language-] {
+            color: #333;
+            background: 0 0;
+            font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            text-align: left;
+            white-space: pre;
+            word-spacing: normal;
+            word-break: normal;
+            word-wrap: normal;
+            line-height: 1.4;
+            -moz-tab-size: 8;
+            -o-tab-size: 8;
+            tab-size: 8;
+            -webkit-hyphens: none;
+            -moz-hyphens: none;
+            -ms-hyphens: none;
+            hyphens: none
+        }
+
+        pre[class*=language-] {
+            padding: .8em;
+            overflow: auto;
+            border-radius: 3px;
+            background: #f5f5f5
+        }
+
+        :not(pre) > code[class*=language-] {
+            padding: .1em;
+            border-radius: .3em;
+            white-space: normal;
+            background: #f5f5f5
+        }
+
+        .token.blockquote, .token.comment {
+            color: #969896
+        }
+
+        .token.cdata {
+            color: #183691
+        }
+
+        .token.doctype, .token.macro.property, .token.punctuation, .token.variable {
+            color: #333
+        }
+
+        .token.builtin, .token.important, .token.keyword, .token.operator, .token.rule {
+            color: #a71d5d
+        }
+
+        .token.attr-value, .token.regex, .token.string, .token.url {
+            color: #183691
+        }
+
+        .token.atrule, .token.boolean, .token.code, .token.command, .token.constant, .token.entity, .token.number, .token.property, .token.symbol {
+            color: #0086b3
+        }
+
+        .token.prolog, .token.selector, .token.tag {
+            color: #63a35c
+        }
+
+        .token.attr-name, .token.class, .token.class-name, .token.function, .token.id, .token.namespace, .token.pseudo-class, .token.pseudo-element, .token.url-reference .token.variable {
+            color: #795da3
+        }
+
+        .token.entity {
+            cursor: help
+        }
+
+        .token.title, .token.title .token.punctuation {
+            font-weight: 700;
+            color: #1d3e81
+        }
+
+        .token.list {
+            color: #ed6a43
+        }
+
+        .token.inserted {
+            background-color: #eaffea;
+            color: #55a532
+        }
+
+        .token.deleted {
+            background-color: #ffecec;
+            color: #bd2c00
+        }
+
+        .token.bold {
+            font-weight: 700
+        }
+
+        .token.italic {
+            font-style: italic
+        }
+
+        .language-json .token.property {
+            color: #183691
+        }
+
+        .language-markup .token.tag .token.punctuation {
+            color: #333
+        }
+
+        .language-css .token.function, code.language-css {
+            color: #0086b3
+        }
+
+        .language-yaml .token.atrule {
+            color: #63a35c
+        }
+
+        code.language-yaml {
+            color: #183691
+        }
+
+        .language-ruby .token.function {
+            color: #333
+        }
+
+        .language-markdown .token.url {
+            color: #795da3
+        }
+
+        .language-makefile .token.symbol {
+            color: #795da3
+        }
+
+        .language-makefile .token.variable {
+            color: #183691
+        }
+
+        .language-makefile .token.builtin {
+            color: #0086b3
+        }
+
+        .language-bash .token.keyword {
+            color: #0086b3
+        }
+
+        pre[data-line] {
+            position: relative;
+            padding: 1em 0 1em 3em
+        }
+
+        pre[data-line] .line-highlight-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: transparent;
+            display: block;
+            width: 100%
+        }
+
+        pre[data-line] .line-highlight {
+            position: absolute;
+            left: 0;
+            right: 0;
+            padding: inherit 0;
+            margin-top: 1em;
+            background: hsla(24, 20%, 50%, .08);
+            background: linear-gradient(to right, hsla(24, 20%, 50%, .1) 70%, hsla(24, 20%, 50%, 0));
+            pointer-events: none;
+            line-height: inherit;
+            white-space: pre
+        }
+
+        pre[data-line] .line-highlight:before, pre[data-line] .line-highlight[data-end]:after {
+            content: attr(data-start);
+            position: absolute;
+            top: .4em;
+            left: .6em;
+            min-width: 1em;
+            padding: 0 .5em;
+            background-color: hsla(24, 20%, 50%, .4);
+            color: #f4f1ef;
+            font: bold 65%/1.5 sans-serif;
+            text-align: center;
+            vertical-align: .3em;
+            border-radius: 999px;
+            text-shadow: none;
+            box-shadow: 0 1px #fff
+        }
+
+        pre[data-line] .line-highlight[data-end]:after {
+            content: attr(data-end);
+            top: auto;
+            bottom: .4em
+        }
+
+        html body {
+            font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            overflow: initial;
+            box-sizing: border-box;
+            word-wrap: break-word
+        }
+
+        html body > :first-child {
+            margin-top: 0
+        }
+
+        html body h1, html body h2, html body h3, html body h4, html body h5, html body h6 {
+            line-height: 1.2;
+            margin-top: 1em;
+            margin-bottom: 16px;
+            color: #000
+        }
+
+        html body h1 {
+            font-size: 2.25em;
+            font-weight: 300;
+            padding-bottom: .3em
+        }
+
+        html body h2 {
+            font-size: 1.75em;
+            font-weight: 400;
+            padding-bottom: .3em
+        }
+
+        html body h3 {
+            font-size: 1.5em;
+            font-weight: 500
+        }
+
+        html body h4 {
+            font-size: 1.25em;
+            font-weight: 600
+        }
+
+        html body h5 {
+            font-size: 1.1em;
+            font-weight: 600
+        }
+
+        html body h6 {
+            font-size: 1em;
+            font-weight: 600
+        }
+
+        html body h1, html body h2, html body h3, html body h4, html body h5 {
+            font-weight: 600
+        }
+
+        html body h5 {
+            font-size: 1em
+        }
+
+        html body h6 {
+            color: #5c5c5c
+        }
+
+        html body strong {
+            color: #000
+        }
+
+        html body del {
+            color: #5c5c5c
+        }
+
+        html body a:not([href]) {
+            color: inherit;
+            text-decoration: none
+        }
+
+        html body a {
+            color: #08c;
+            text-decoration: none
+        }
+
+        html body a:hover {
+            color: #00a3f5;
+            text-decoration: none
+        }
+
+        html body img {
+            max-width: 100%
+        }
+
+        html body > p {
+            margin-top: 0;
+            margin-bottom: 16px;
+            word-wrap: break-word
+        }
+
+        html body > ol, html body > ul {
+            margin-bottom: 16px
+        }
+
+        html body ol, html body ul {
+            padding-left: 2em
+        }
+
+        html body ol.no-list, html body ul.no-list {
+            padding: 0;
+            list-style-type: none
+        }
+
+        html body ol ol, html body ol ul, html body ul ol, html body ul ul {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+
+        html body li {
+            margin-bottom: 0
+        }
+
+        html body li.task-list-item {
+            list-style: none
+        }
+
+        html body li > p {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+
+        html body .task-list-item-checkbox {
+            margin: 0 .2em .25em -1.8em;
+            vertical-align: middle
+        }
+
+        html body .task-list-item-checkbox:hover {
+            cursor: pointer
+        }
+
+        html body blockquote {
+            margin: 16px 0;
+            font-size: inherit;
+            padding: 0 15px;
+            color: #5c5c5c;
+            background-color: #f0f0f0;
+            border-left: 4px solid #d6d6d6
+        }
+
+        html body blockquote > :first-child {
+            margin-top: 0
+        }
+
+        html body blockquote > :last-child {
+            margin-bottom: 0
+        }
+
+        html body hr {
+            height: 4px;
+            margin: 32px 0;
+            background-color: #d6d6d6;
+            border: 0 none
+        }
+
+        html body table {
+            margin: 10px 0 15px 0;
+            border-collapse: collapse;
+            border-spacing: 0;
+            display: block;
+            width: 100%;
+            overflow: auto;
+            word-break: normal;
+            word-break: keep-all
+        }
+
+        html body table th {
+            font-weight: 700;
+            color: #000
+        }
+
+        html body table td, html body table th {
+            border: 1px solid #d6d6d6;
+            padding: 6px 13px
+        }
+
+        html body dl {
+            padding: 0
+        }
+
+        html body dl dt {
+            padding: 0;
+            margin-top: 16px;
+            font-size: 1em;
+            font-style: italic;
+            font-weight: 700
+        }
+
+        html body dl dd {
+            padding: 0 16px;
+            margin-bottom: 16px
+        }
+
+        html body code {
+            font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+            font-size: .85em;
+            color: #000;
+            background-color: #f0f0f0;
+            border-radius: 3px;
+            padding: .2em 0
+        }
+
+        html body code::after, html body code::before {
+            letter-spacing: -.2em;
+            content: '\00a0'
+        }
+
+        html body pre > code {
+            padding: 0;
+            margin: 0;
+            word-break: normal;
+            white-space: pre;
+            background: 0 0;
+            border: 0
+        }
+
+        html body .highlight {
+            margin-bottom: 16px
+        }
+
+        html body .highlight pre, html body pre {
+            padding: 1em;
+            overflow: auto;
+            line-height: 1.45;
+            border: #d6d6d6;
+            border-radius: 3px
+        }
+
+        html body .highlight pre {
+            margin-bottom: 0;
+            word-break: normal
+        }
+
+        html body pre code, html body pre tt {
+            display: inline;
+            max-width: initial;
+            padding: 0;
+            margin: 0;
+            overflow: initial;
+            line-height: inherit;
+            word-wrap: normal;
+            background-color: transparent;
+            border: 0
+        }
+
+        html body pre code:after, html body pre code:before, html body pre tt:after, html body pre tt:before {
+            content: normal
+        }
+
+        html body blockquote, html body dl, html body ol, html body p, html body pre, html body ul {
+            margin-top: 0;
+            margin-bottom: 16px
+        }
+
+        html body kbd {
+            color: #000;
+            border: 1px solid #d6d6d6;
+            border-bottom: 2px solid #c7c7c7;
+            padding: 2px 4px;
+            background-color: #f0f0f0;
+            border-radius: 3px
+        }
+
+        @media print {
+            html body {
+                background-color: #fff
+            }
+
+            html body h1, html body h2, html body h3, html body h4, html body h5, html body h6 {
+                color: #000;
+                page-break-after: avoid
+            }
+
+            html body blockquote {
+                color: #5c5c5c
+            }
+
+            html body pre {
+                page-break-inside: avoid
+            }
+
+            html body table {
+                display: table
+            }
+
+            html body img {
+                display: block;
+                max-width: 100%;
+                max-height: 100%
+            }
+
+            html body code, html body pre {
+                word-wrap: break-word;
+                white-space: pre
+            }
+        }
+
+        .markdown-preview {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box
+        }
+
+        .markdown-preview ul {
+            list-style: disc
+        }
+
+        .markdown-preview ul ul {
+            list-style: circle
+        }
+
+        .markdown-preview ul ul ul {
+            list-style: square
+        }
+
+        .markdown-preview ol {
+            list-style: decimal
+        }
+
+        .markdown-preview ol ol, .markdown-preview ul ol {
+            list-style-type: lower-roman
+        }
+
+        .markdown-preview ol ol ol, .markdown-preview ol ul ol, .markdown-preview ul ol ol, .markdown-preview ul ul ol {
+            list-style-type: lower-alpha
+        }
+
+        .markdown-preview .newpage, .markdown-preview .pagebreak {
+            page-break-before: always
+        }
+
+        .markdown-preview pre.line-numbers {
+            position: relative;
+            padding-left: 3.8em;
+            counter-reset: linenumber
+        }
+
+        .markdown-preview pre.line-numbers > code {
+            position: relative
+        }
+
+        .markdown-preview pre.line-numbers .line-numbers-rows {
+            position: absolute;
+            pointer-events: none;
+            top: 1em;
+            font-size: 100%;
+            left: 0;
+            width: 3em;
+            letter-spacing: -1px;
+            border-right: 1px solid #999;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        .markdown-preview pre.line-numbers .line-numbers-rows > span {
+            pointer-events: none;
+            display: block;
+            counter-increment: linenumber
+        }
+
+        .markdown-preview pre.line-numbers .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: .8em;
+            text-align: right
+        }
+
+        .markdown-preview .mathjax-exps .MathJax_Display {
+            text-align: center !important
+        }
+
+        .markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group {
+            display: none
+        }
+
+        .markdown-preview:not([data-for=preview]) .code-chunk .status {
+            display: none
+        }
+
+        .markdown-preview:not([data-for=preview]) .code-chunk .output-div {
+            margin-bottom: 16px
+        }
+
+        .markdown-preview .md-toc {
+            padding: 0
+        }
+
+        .markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link {
+            display: inline;
+            padding: .25rem 0
+        }
+
+        .markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div, .markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p {
+            display: inline
+        }
+
+        .markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link {
+            font-weight: 800
+        }
+
+        .scrollbar-style::-webkit-scrollbar {
+            width: 8px
+        }
+
+        .scrollbar-style::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background-color: transparent
+        }
+
+        .scrollbar-style::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: rgba(150, 150, 150, .66);
+            border: 4px solid rgba(150, 150, 150, .66);
+            background-clip: content-box
+        }
+
+        html body[for=html-export]:not([data-presentation-mode]) {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            overflow: auto
+        }
+
+        html body[for=html-export]:not([data-presentation-mode]) .markdown-preview {
+            position: relative;
+            top: 0;
+            min-height: 100vh
+        }
+
+        @media screen and (min-width: 914px) {
+            html body[for=html-export]:not([data-presentation-mode]) .markdown-preview {
+                padding: 2em calc(50% - 457px + 2em)
+            }
+        }
+
+        @media screen and (max-width: 914px) {
+            html body[for=html-export]:not([data-presentation-mode]) .markdown-preview {
+                padding: 2em
+            }
+        }
+
+        @media screen and (max-width: 450px) {
+            html body[for=html-export]:not([data-presentation-mode]) .markdown-preview {
+                font-size: 14px !important;
+                padding: 1em
+            }
+        }
+
+        @media print {
+            html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn {
+                display: none
+            }
+        }
+
+        html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn {
+            position: fixed;
+            bottom: 8px;
+            left: 8px;
+            font-size: 28px;
+            cursor: pointer;
+            color: inherit;
+            z-index: 99;
+            width: 32px;
+            text-align: center;
+            opacity: .4
+        }
+
+        html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn {
+            opacity: 1
+        }
+
+        html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 100%;
+            padding: 32px 0 48px 0;
+            font-size: 14px;
+            box-shadow: 0 0 4px rgba(150, 150, 150, .33);
+            box-sizing: border-box;
+            overflow: auto;
+            background-color: inherit
+        }
+
+        html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar {
+            width: 8px
+        }
+
+        html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background-color: transparent
+        }
+
+        html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: rgba(150, 150, 150, .66);
+            border: 4px solid rgba(150, 150, 150, .66);
+            background-clip: content-box
+        }
+
+        html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a {
+            text-decoration: none
+        }
+
+        html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc {
+            padding: 0 16px
+        }
+
+        html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link {
+            display: inline;
+            padding: .25rem 0
+        }
+
+        html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div, html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p {
+            display: inline
+        }
+
+        html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link {
+            font-weight: 800
+        }
+
+        html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+            left: 300px;
+            width: calc(100% - 300px);
+            padding: 2em calc(50% - 457px - 300px / 2);
+            margin: 0;
+            box-sizing: border-box
+        }
+
+        @media screen and (max-width: 1274px) {
+            html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+                padding: 2em
+            }
+        }
+
+        @media screen and (max-width: 450px) {
+            html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+                width: 100%
+            }
+        }
+
+        html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview {
+            left: 50%;
+            transform: translateX(-50%)
+        }
+
+        html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc {
+            display: none
+        }
+
+        /* Please visit the URL below for more information: */
+        /*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+    </style>
+    <!-- The content below will be included at the end of the <head> element. -->
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            // your code here
+        });
+    </script>
+</head>
+<body for="html-export">
+
+
+<div class="crossnote markdown-preview  ">
+
+    <h2><strong>银行理财设计文档</strong></h2>
+    <p>
+        该项目是一个简单的理财平台，提供用户注册、登录、首页展示、银行理财产品查询等功能。项目采用JS、Vue框架作为动态页面技术，Servlet处理后端逻辑，JDBC用于与MySQL数据库交互。</p>
+    <p><br><br><br></p>
+    <h2 id="1-登录系统">1. 登录系统 </h2>
+    <hr>
+    <p>登录系统包含两个主要页面：<strong>注册页面</strong> <em>(Register)</em> 和 <strong>登录页面</strong>
+        <em>(Login)</em>。这两个页面均设计有相应的提交表单，用户可以通过这些表单输入必要的信息以完成操作。</p>
+    <blockquote>
+        <p>
+            在注册页面，用户需要填写注册页面上的表单，包括用户名和密码，并将这些信息提交至数据库<code>database</code>。<br><br>
+            在登录页面，用户则需要输入之前注册时所创建的用户名和密码，通过提交表单将这些信息提交至数据库进行验证，从而成功登录系统。
+        </p>
+    </blockquote>
+    <blockquote>
+        <p>在注册中会对数据库的数据进行检索，如果发现有重复的用户名，将会提示：<span
+                style="color: red;"><strong>用户名已被注册</strong></span><br><br>
+            在登录中同样会对数据库的数据进行检索，如果没有注册该用户名，将会提示：<span
+                    style="color: red;"><strong>用户不存在</strong></span></p>
+    </blockquote>
+    <p>这一双重页面结构旨在提供灵活而安全的用户身份验证机制，以确保系统的可靠性和用户数据的安全性。</p>
+    <br>
+    <h3 id="11-功能实现">1.1 功能实现 </h3>
+    <h4 id="111-前端实现">1.1.1 前端实现 </h4>
+    <h5 id="1-注册页面register和登录页面login">1. 注册页面<code>Register</code>和登录页面<code>Login</code></h5>
+    <p>注册页面<code>Register</code> 这一部分包含了一个图像和一个注册表单。图像中的两个<code>div</code>元素包含了一些文本和一个按钮。按钮的不同位置对应不同的注册或登录操作。注册表单包括两个输入字段（用户名和密码）和两个相关的帮助文本。还有一个提交按钮，点击时会触发<code>registerAction</code>函数。
+    </p>
+    <p>登录页面<code>Login</code> 这一部分定义了一个登录表单，其中包含一个标题、两个输入框（<strong>用户名和密码</strong>）以及一个登录按钮。使用了CSS
+        类来定义样式，以及v-bind指令来绑定变量 <code>{{redText}}</code> 和 <code>{{greenText}}</code> 到元素的属性上。点击登录按钮时，会调用<code>loginAction</code>函数。
+    </p>
+    <h5 id="2-vue部分功能实现">2. Vue部分功能实现 </h5>
+    <pre data-role="codeBlock" data-info="js" class="language-javascript js"><code><span
+            class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"js/script.js"</span><span
+            class="token operator">&gt;</span><span class="token operator">&lt;</span><span
+            class="token operator">/</span>script<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"js/vue.js"</span><span
+                class="token operator">&gt;</span><span class="token operator">&lt;</span><span
+                class="token operator">/</span>script<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>  
+    <span class="token keyword keyword-var">var</span> app <span class="token operator">=</span> <span
+                class="token keyword keyword-new">new</span> <span class="token class-name">Vue</span><span
+                class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">el</span><span class="token operator">:</span> <span
+                class="token string">"#app"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">data</span><span class="token operator">:</span> <span
+                class="token punctuation">{</span>
+            <span class="token literal-property property">greenText</span><span class="token operator">:</span> <span
+                class="token string">""</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">redText</span><span class="token operator">:</span> <span
+                class="token string">""</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>  
+        <span class="token literal-property property">methods</span><span class="token operator">:</span> <span
+                class="token punctuation">{</span>
+            <span class="token function-variable function">loginAction</span><span class="token operator">:</span> <span
+                class="token keyword keyword-function">function</span> <span class="token punctuation">(</span><span
+                class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">redText</span> <span class="token operator">=</span> <span
+                class="token string">""</span><span class="token punctuation">;</span>
+                <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">greenText</span> <span class="token operator">=</span> <span
+                class="token string">""</span><span class="token punctuation">;</span>
+                <span class="token keyword keyword-let">let</span> self <span class="token operator">=</span> <span
+                class="token keyword keyword-this">this</span><span class="token punctuation">;</span>
+                <span class="token keyword keyword-let">let</span> xhr <span class="token operator">=</span> <span
+                class="token keyword keyword-new">new</span> <span class="token class-name">XMLHttpRequest</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+                xhr<span class="token punctuation">.</span><span
+                class="token method function property-access">open</span><span class="token punctuation">(</span><span
+                class="token string">'POST'</span><span class="token punctuation">,</span> <span class="token string">'/bighome/lg'</span><span
+                class="token punctuation">,</span> <span class="token boolean">true</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+                xhr<span class="token punctuation">.</span><span class="token method function property-access">setRequestHeader</span><span
+                class="token punctuation">(</span><span class="token string">'Content-type'</span><span
+                class="token punctuation">,</span> <span class="token string">'application/json'</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// 等待服务器返回数据  </span>
+                xhr<span class="token punctuation">.</span><span
+                class="token method-variable function-variable method function property-access">onreadystatechange</span> <span
+                class="token operator">=</span> <span class="token keyword keyword-function">function</span> <span
+                class="token punctuation">(</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+                    <span class="token keyword control-flow keyword-if">if</span> <span
+                class="token punctuation">(</span>xhr<span class="token punctuation">.</span><span
+                class="token property-access">readyState</span> <span class="token operator">===</span> <span
+                class="token number">4</span> <span class="token operator">&amp;&amp;</span> xhr<span
+                class="token punctuation">.</span><span class="token property-access">status</span> <span
+                class="token operator">===</span> <span class="token number">200</span><span
+                class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token comment">// console.log(xhr.responseText);  </span>
+                        <span class="token keyword keyword-let">let</span> data <span
+                class="token operator">=</span> <span class="token known-class-name class-name">JSON</span><span
+                class="token punctuation">.</span><span class="token method function property-access">parse</span><span
+                class="token punctuation">(</span>xhr<span class="token punctuation">.</span><span
+                class="token property-access">responseText</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+                        <span class="token keyword control-flow keyword-if">if</span> <span
+                class="token punctuation">(</span>data<span class="token punctuation">.</span><span
+                class="token property-access">status</span> <span class="token operator">===</span> <span
+                class="token string">"success"</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+                            <span class="token function">alert</span><span class="token punctuation">(</span><span
+                class="token string">"登录成功"</span> <span class="token operator">+</span> data<span
+                class="token punctuation">.</span><span class="token property-access">message</span><span
+                class="token punctuation">)</span>
+                            <span class="token dom variable">window</span><span class="token punctuation">.</span><span
+                class="token property-access">location</span><span class="token punctuation">.</span><span
+                class="token method function property-access">reload</span><span class="token punctuation">(</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span> <span class="token keyword control-flow keyword-else">else</span> <span
+                class="token punctuation">{</span>
+                            <span class="token function">alert</span><span class="token punctuation">(</span><span
+                class="token string">"登录失败"</span> <span class="token operator">+</span> data<span
+                class="token punctuation">.</span><span class="token property-access">message</span><span
+                class="token punctuation">)</span>
+                            <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">redText</span> <span class="token operator">=</span> data<span
+                class="token punctuation">.</span><span class="token property-access">message</span><span
+                class="token punctuation">;</span>
+							self<span class="token punctuation">.</span><span
+                class="token property-access">redText</span> <span class="token operator">=</span> data<span
+                class="token punctuation">.</span><span class="token property-access">message</span><span
+                class="token punctuation">;</span>
+                        <span class="token punctuation">}</span>  
+                    <span class="token punctuation">}</span>  
+                <span class="token punctuation">}</span><span class="token punctuation">;</span>  
+                <span class="token comment">// 先发送数据  </span>
+                <span class="token comment">// 从input获取数据  </span>
+                <span class="token keyword keyword-let">let</span> username <span class="token operator">=</span> <span
+                class="token dom variable">document</span><span class="token punctuation">.</span><span
+                class="token method function property-access">querySelector</span><span
+                class="token punctuation">(</span><span class="token string">'[name="loginUsername"]'</span><span
+                class="token punctuation">)</span><span class="token punctuation">.</span><span
+                class="token property-access">value</span><span class="token punctuation">;</span>
+                <span class="token keyword keyword-let">let</span> password <span class="token operator">=</span> <span
+                class="token dom variable">document</span><span class="token punctuation">.</span><span
+                class="token method function property-access">querySelector</span><span
+                class="token punctuation">(</span><span class="token string">'[name="loginPassword"]'</span><span
+                class="token punctuation">)</span><span class="token punctuation">.</span><span
+                class="token property-access">value</span><span class="token punctuation">;</span>
+                xhr<span class="token punctuation">.</span><span
+                class="token method function property-access">send</span><span class="token punctuation">(</span><span
+                class="token known-class-name class-name">JSON</span><span class="token punctuation">.</span><span
+                class="token method function property-access">stringify</span><span
+                class="token punctuation">(</span><span class="token punctuation">{</span><span
+                class="token literal-property property">username</span><span
+                class="token operator">:</span> username<span class="token punctuation">,</span> <span
+                class="token literal-property property">password</span><span
+                class="token operator">:</span> password<span class="token punctuation">,</span> <span
+                class="token literal-property property">type</span><span class="token operator">:</span> <span
+                class="token string">"login"</span><span class="token punctuation">}</span><span
+                class="token punctuation">)</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>  
+            <span class="token function-variable function">buttonAction</span><span
+                class="token operator">:</span> <span class="token keyword keyword-function">function</span> <span
+                class="token punctuation">(</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+                <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">redText</span> <span class="token operator">=</span> <span
+                class="token string">""</span><span class="token punctuation">;</span>
+                <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">greenText</span> <span class="token operator">=</span> <span
+                class="token string">""</span><span class="token punctuation">;</span>
+                <span class="token dom variable">document</span><span class="token punctuation">.</span><span
+                class="token method function property-access">querySelector</span><span
+                class="token punctuation">(</span><span class="token string">'.content'</span><span
+                class="token punctuation">)</span><span class="token punctuation">.</span><span
+                class="token property-access">classList</span><span class="token punctuation">.</span><span
+                class="token method function property-access">toggle</span><span class="token punctuation">(</span><span
+                class="token string">'s--signup'</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>  
+            <span class="token function-variable function">registerAction</span><span
+                class="token operator">:</span> <span class="token keyword keyword-function">function</span> <span
+                class="token punctuation">(</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+                <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">redText</span> <span class="token operator">=</span> <span
+                class="token string">""</span><span class="token punctuation">;</span>
+                <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">greenText</span> <span class="token operator">=</span> <span
+                class="token string">""</span><span class="token punctuation">;</span>
+                <span class="token keyword keyword-let">let</span> self <span class="token operator">=</span> <span
+                class="token keyword keyword-this">this</span><span class="token punctuation">;</span>
+                <span class="token keyword keyword-let">let</span> xhr <span class="token operator">=</span> <span
+                class="token keyword keyword-new">new</span> <span class="token class-name">XMLHttpRequest</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+                xhr<span class="token punctuation">.</span><span
+                class="token method function property-access">open</span><span class="token punctuation">(</span><span
+                class="token string">'POST'</span><span class="token punctuation">,</span> <span class="token string">'/bighome/lg'</span><span
+                class="token punctuation">,</span> <span class="token boolean">true</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+                xhr<span class="token punctuation">.</span><span class="token method function property-access">setRequestHeader</span><span
+                class="token punctuation">(</span><span class="token string">'Content-type'</span><span
+                class="token punctuation">,</span> <span class="token string">'application/json'</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// 等待服务器返回数据  </span>
+                xhr<span class="token punctuation">.</span><span
+                class="token method-variable function-variable method function property-access">onreadystatechange</span> <span
+                class="token operator">=</span> <span class="token keyword keyword-function">function</span> <span
+                class="token punctuation">(</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+                    <span class="token keyword control-flow keyword-if">if</span> <span
+                class="token punctuation">(</span>xhr<span class="token punctuation">.</span><span
+                class="token property-access">readyState</span> <span class="token operator">===</span> <span
+                class="token number">4</span> <span class="token operator">&amp;&amp;</span> xhr<span
+                class="token punctuation">.</span><span class="token property-access">status</span> <span
+                class="token operator">===</span> <span class="token number">200</span><span
+                class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token comment">// console.log(xhr.responseText);  </span>
+                        <span class="token keyword keyword-let">let</span> data <span
+                class="token operator">=</span> <span class="token known-class-name class-name">JSON</span><span
+                class="token punctuation">.</span><span class="token method function property-access">parse</span><span
+                class="token punctuation">(</span>xhr<span class="token punctuation">.</span><span
+                class="token property-access">responseText</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+                        <span class="token keyword control-flow keyword-if">if</span> <span
+                class="token punctuation">(</span>data<span class="token punctuation">.</span><span
+                class="token property-access">status</span> <span class="token operator">===</span> <span
+                class="token string">"success"</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+                            <span class="token function">alert</span><span class="token punctuation">(</span><span
+                class="token string">"注册成功"</span> <span class="token operator">+</span> data<span
+                class="token punctuation">.</span><span class="token property-access">message</span><span
+                class="token punctuation">)</span>
+                            self<span class="token punctuation">.</span><span
+                class="token property-access">greenText</span> <span class="token operator">=</span> data<span
+                class="token punctuation">.</span><span class="token property-access">message</span><span
+                class="token punctuation">;</span>
+                        <span class="token punctuation">}</span> <span class="token keyword control-flow keyword-else">else</span> <span
+                class="token punctuation">{</span>
+                            <span class="token function">alert</span><span class="token punctuation">(</span><span
+                class="token string">"注册失败"</span> <span class="token operator">+</span> data<span
+                class="token punctuation">.</span><span class="token property-access">message</span><span
+                class="token punctuation">)</span>
+                            self<span class="token punctuation">.</span><span
+                class="token property-access">redText</span> <span class="token operator">=</span> data<span
+                class="token punctuation">.</span><span class="token property-access">message</span><span
+                class="token punctuation">;</span>
+                        <span class="token punctuation">}</span>  
+                    <span class="token punctuation">}</span>  
+                <span class="token punctuation">}</span><span class="token punctuation">;</span>  
+                <span class="token comment">// 先发送数据  </span>
+                <span class="token comment">// 从input获取数据  </span>
+                <span class="token keyword keyword-let">let</span> username <span class="token operator">=</span> <span
+                class="token dom variable">document</span><span class="token punctuation">.</span><span
+                class="token method function property-access">querySelector</span><span
+                class="token punctuation">(</span><span class="token string">'[name="registerUsername"]'</span><span
+                class="token punctuation">)</span><span class="token punctuation">.</span><span
+                class="token property-access">value</span><span class="token punctuation">;</span>
+                <span class="token keyword keyword-let">let</span> password <span class="token operator">=</span> <span
+                class="token dom variable">document</span><span class="token punctuation">.</span><span
+                class="token method function property-access">querySelector</span><span
+                class="token punctuation">(</span><span class="token string">'[name="registerPassword"]'</span><span
+                class="token punctuation">)</span><span class="token punctuation">.</span><span
+                class="token property-access">value</span><span class="token punctuation">;</span>
+                xhr<span class="token punctuation">.</span><span
+                class="token method function property-access">send</span><span class="token punctuation">(</span><span
+                class="token known-class-name class-name">JSON</span><span class="token punctuation">.</span><span
+                class="token method function property-access">stringify</span><span
+                class="token punctuation">(</span><span class="token punctuation">{</span><span
+                class="token literal-property property">username</span><span
+                class="token operator">:</span> username<span class="token punctuation">,</span> <span
+                class="token literal-property property">password</span><span
+                class="token operator">:</span> password<span class="token punctuation">,</span> <span
+                class="token literal-property property">type</span><span class="token operator">:</span> <span
+                class="token string">"register"</span><span class="token punctuation">}</span><span
+                class="token punctuation">)</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+            <span class="token punctuation">}</span>  
+        <span class="token punctuation">}</span>  
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>  
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span
+                class="token operator">&gt;</span>
+</code></pre>
+    <blockquote>
+        <p>
+            此部分为Vue应用程序，通过引入Vue.js和自定义的script.js文件来实现。代码中创建了一个Vue实例，设置了两个数据属性（<code>greenText</code>和<code>redText</code>），以及三个方法（<code>loginAction</code>，<code>buttonAction</code>和<code>registerAction</code>）。
+        </p>
+        <ol>
+            <li><code>loginAction</code>方法用于处理用户登录逻辑；</li>
+            <li><code>buttonAction</code>方法用于处理按钮点击事件；</li>
+            <li><code>registerAction</code>方法用于处理用户注册逻辑。</li>
+        </ol>
+        <p>在方法中，通过<code>XMLHttpRequest</code>对象向服务器发送请求，并根据服务器返回的数据更新页面上的文本内容。<br>
+            <br></p>
+    </blockquote>
+    <h4 id="112-后端实现">1.1.2 后端实现 </h4>
+    <h5 id="1-数据库实现">1. 数据库实现 </h5>
+    <h6 id="数据库设计"><strong>数据库设计</strong></h6>
+    <p>表名: <code>servlet_save</code></p>
+    <table>
+        <thead>
+        <tr>
+            <th>列名</th>
+            <th>数据类型</th>
+            <th>约束</th>
+            <th>说明</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><code>usrname</code></td>
+            <td><code>VARCHAR(100)</code></td>
+            <td><code>NOT NULL</code>, Primary Key</td>
+            <td>用户名，最大长度100，不允许为空，作为主键</td>
+        </tr>
+        <tr>
+            <td><code>usrpassword</code></td>
+            <td><code>VARCHAR(100)</code></td>
+            <td><code>NOT NULL</code></td>
+            <td>用户密码，最大长度100，不允许为空</td>
+        </tr>
+        </tbody>
+    </table>
+    <hr>
+    <h6 id="数据库代码实现">数据库代码实现 </h6>
+    <pre data-role="codeBlock" data-info="java" class="language-java java"><code><span
+            class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span
+            class="token keyword keyword-void">void</span> <span class="token function">checkTable</span><span
+            class="token punctuation">(</span><span class="token class-name">Connection</span> connection<span
+            class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-try">try</span> <span class="token punctuation">{</span>  
+        <span class="token class-name">Statement</span> statement <span class="token operator">=</span> connection<span
+                class="token punctuation">.</span><span class="token function">createStatement</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+    <span class="token class-name">String</span> sql <span class="token operator">=</span> <span class="token string">"CREATE TABLE if not exists `servlet_save` (\n"</span> <span
+                class="token operator">+</span>
+            <span class="token string">"  `usrname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,\n"</span> <span
+                class="token operator">+</span>
+            <span class="token string">"  `usrpassword` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,\n"</span> <span
+                class="token operator">+</span>
+            <span class="token string">"  PRIMARY KEY (`usrname`)\n"</span> <span class="token operator">+</span>  
+            <span class="token string">") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;"</span><span
+                class="token punctuation">;</span>
+        statement<span class="token punctuation">.</span><span class="token function">execute</span><span
+                class="token punctuation">(</span>sql<span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword keyword-catch">catch</span> <span
+                class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span
+                class="token punctuation">)</span> <span class="token punctuation">{</span>
+        e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span
+                class="token punctuation">.</span><span class="token function">println</span><span
+                class="token punctuation">(</span><span class="token string">"checkTable error"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+</code></pre>
+    <blockquote>
+        <p>这个函数使用传入的连接对象来创建一个名为<code>servlet_save</code>的表，该表包含<code>usrname</code>和<code>usrpassword</code>两个列，其中<code>usrname</code>列为主键。如果表不存在则创建，如果已存在则不执行任何操作。函数通过执行SQL语句来实现此功能。如果执行过程中出现异常，则打印异常信息并输出<code>checkTable
+            error</code>。</p>
+    </blockquote>
+    <br>
+    <h3 id="12-页面展示">1.2 页面展示 </h3>
+    <h4 id="121-注册页面">1.2.1 注册页面 </h4>
+    <ol>
+        <li>初始页面</li>
+    </ol>
+    <p><img src="img/%E5%88%9D%E5%A7%8B%E9%A1%B5%E9%9D%A22.png" alt="png"></p>
+    <hr>
+    <ol start="2">
+        <li>注册成功</li>
+    </ol>
+    <h2><img src="img/%E6%B3%A8%E5%86%8C%E6%88%90%E5%8A%9F.png" alt="png"></h2>
+    <ol start="3">
+        <li>注册失败</li>
+    </ol>
+    <p><img src="img/%E6%B3%A8%E5%86%8C%E5%A4%B1%E8%B4%A5.png" alt="png"></p>
+    <blockquote>
+        <p>提示：<strong>用户名已被注册</strong></p>
+    </blockquote>
+    <hr>
+    <h4 id="122-登录页面">1.2.2 登录页面 </h4>
+    <ol>
+        <li>初始页面</li>
+    </ol>
+    <h2><img src="img/%E5%88%9D%E5%A7%8B%E9%A1%B5%E9%9D%A2.png" alt="png"></h2>
+    <ol start="2">
+        <li>登录失败</li>
+    </ol>
+    <p><img src="img/%E7%99%BB%E5%BD%95%E5%A4%B1%E8%B4%A5.png" alt="png"></p>
+    <blockquote>
+        <p>提示：<strong>用户不存在</strong></p>
+    </blockquote>
+    <h4 id="123-特色功能">1.2.3 特色功能 </h4>
+    <p>左右过度切换的登录注册页面</p>
+    <p><img src="img/%E5%8A%A8%E7%94%BB.gif" alt="gif"></p>
+    <p><br><br><br></p>
+    <h2 id="2-主页">2. 主页 </h2>
+    <hr>
+    <p>在银行理财设计中，主页共包含三大模块：<strong>理财首页、银行理财、理财公告</strong></p>
+    <br>
+    <h3 id="21-理财首页-index">2.1 理财首页 <code>index</code></h3>
+    <p>包括首页设计、数据动态响应和数据库设计三方面</p>
+    <h4 id="211-首页设计">2.1.1 首页设计 </h4>
+    <ol>
+        <li><strong>顶部标签导航</strong>：
+            <ul>
+                <li>显示在页面顶部，包括银行客服热线和退出登录按钮。</li>
+                <li>通过导航栏提供快捷方式，使用户能轻松访问其他页面。</li>
+                <li>以水平标签的形式展示在页面上部，包括"银行首页"、"银行理财"和"理财公告"等标签。</li>
+                <li>通过点击这些标签，<strong>用户可以快速切换到对应的页面，实现快速导航。</strong></li>
+            </ul>
+        </li>
+        <li><strong>产品展示区域</strong>：
+            <ul>
+                <li>包含产品的基本信息，如<strong>产品名称、预期年化利率、投资期限、起投金额</strong>等。</li>
+                <li>利用Vue.js实现数据的动态绑定，使这些信息能够<strong>实时更新</strong>。</li>
+                <li>展示了产品的起息日和到期日，以及递增金额和投资截止时间。</li>
+            </ul>
+        </li>
+        <li><strong>投资进度条</strong>：
+            <ul>
+                <li>使用进度条展示当前产品的投资进度，即已投金额占总投资额的百分比。</li>
+                <li>利用Vue.js的数据绑定，实现<strong>动态更新进度条</strong>的效果。</li>
+            </ul>
+        </li>
+        <li><strong>用户投资交互区域</strong>：
+            <ul>
+                <li>提供了输入框，让用户输入投资金额。</li>
+                <li>使用Vue.js实现输入金额的实时响应和相关计算。</li>
+                <li>展示了用户账户余额和预计收益，并根据用户输入的金额计算预计收益。</li>
+            </ul>
+        </li>
+        <li><strong>标签页切换区域</strong>：
+            <ul>
+                <li>包含了产品说明、风险提示、权益须知等标签页。</li>
+                <li>通过点击标签，展示不同的标签内容。</li>
+                <li>利用Vue.js实现标签的切换和内容的动态更新。</li>
+            </ul>
+        </li>
+        <li><strong>底部信息区域</strong>：
+            <ul>
+                <li>包括关于我们、帮助中心、关注我们等相关链接。</li>
+                <li>显示客服热线，并提供联系方式。</li>
+                <li>提供网站地图、网站声明等信息。</li>
+            </ul>
+        </li>
+        <li><strong>响应式设计</strong>：
+            <ul>
+                <li><strong>采用了响应式布局，使页面能够适应不同的设备和屏幕尺寸。</strong></li>
+                <li>通过媒体查询等技术，确保在移动设备上也能提供良好的用户体验。</li>
+            </ul>
+        </li>
+    </ol>
+    <h4 id="212-数据动态响应">2.1.2 数据动态响应 </h4>
+    <p>
+        该页面是一个使用Vue.js实现的动态页面，通过AJAX请求与后端交互获取数据，展示银行理财产品的详细信息，同时提供用户投资和退出登录的功能。</p>
+    <ul>
+        <li><strong>data 属性</strong>
+            <ul>
+                <li>包含页面中需要动态展示的各种数据，如产品名称、年化利率、投资期限等。</li>
+                <li>用于计算和展示投资进度、剩余可投金额、账户余额、预计收益等信息。</li>
+            </ul>
+        </li>
+        <li><strong>methods 方法</strong>
+            <ul>
+                <li><code>allMethodRun</code>: 初始化页面，调用获取数据的方法。</li>
+                <li><code>selectTab</code>: 切换标签页的方法。</li>
+                <li><code>startProgress</code>: 启动投资进度条动画的方法。</li>
+                <li><code>getShowData</code>: 通过AJAX请求获取后端数据的方法。</li>
+                <li><code>startCountdown</code>: 启动倒计时的方法。</li>
+                <li><code>padZero</code>: 格式化数字，补零的方法。</li>
+                <li><code>InputMoney</code>: 处理用户输入投资金额并提交的方法。</li>
+                <li><code>loginOut</code>: 处理用户退出登录的方法。</li>
+            </ul>
+        </li>
+    </ul>
+    <h4 id="213-数据库设计">2.1.3 数据库设计 </h4>
+    <p>表格：FinancialProducts</p>
+    <ul>
+        <li>以下为示例：</li>
+    </ul>
+    <table>
+        <thead>
+        <tr>
+            <th>product_id</th>
+            <th>name</th>
+            <th>annual_interest_rate</th>
+            <th>start_date</th>
+            <th>end_date</th>
+            <th>incremental_amount</th>
+            <th>initial_amount</th>
+            <th>total_amount</th>
+            <th>remaining_amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>安富 200110期</td>
+            <td>3.07</td>
+            <td>2023-12-02</td>
+            <td>2023-12-20</td>
+            <td>1000.0</td>
+            <td>10000.0</td>
+            <td>500000.0</td>
+            <td>499008.0</td>
+        </tr>
+        </tbody>
+    </table>
+    <ul>
+        <li><code>product_id</code> 是每个产品的唯一标识符，并设置为主键。</li>
+        <li><code>name</code> 表示理财产品的名称。</li>
+        <li><code>annual_interest_rate</code> 是理财产品的预期年化利率。</li>
+        <li><code>start_date</code> 和 <code>end_date</code> 表示项目的起息日和到期日。</li>
+        <li><code>incremental_amount</code> 是理财产品的递增金额。</li>
+        <li><code>initial_amount</code> 表示起始资金。</li>
+        <li><code>total_amount</code> 表示交易的资金总额。</li>
+        <li><code>remaining_amount</code> 表示账户余额。</li>
+    </ul>
+    <h4 id="214-页面展示">2.1.4 页面展示 </h4>
+    <p><img src="img/%E9%93%B6%E8%A1%8C%E9%A6%96%E9%A1%B5.jpg" alt="jpg"></p>
+    <br>
+    <h3 id="22-银行理财-financing">2.2 银行理财 <code>financing</code></h3>
+    <p>这一部分内容主要是链接数据库，设计数据库并完成查询操作</p>
+    <h4 id="221-数据库设计">2.2.1 数据库设计 </h4>
+    <p>表格：FinancingData</p>
+    <ul>
+        <li>以下为示例：</li>
+    </ul>
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>code</th>
+            <th>name</th>
+            <th>category</th>
+            <th>issuer</th>
+            <th>raise_method</th>
+            <th>sales_area</th>
+            <th>risk_level</th>
+            <th>status</th>
+            <th>net_value</th>
+            <th>latest_tip</th>
+            <th>details</th>
+            <th>notice</th>
+            <th>time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>B120A0041</td>
+            <td>稳赢计划1240期</td>
+            <td>理财</td>
+            <td>建设银行</td>
+            <td>-</td>
+            <td>-</td>
+            <td>中等风险</td>
+            <td>正常交易</td>
+            <td>15000</td>
+            <td>有</td>
+            <td>建设银行理财产品，收益稳健</td>
+            <td>建设银行理财推荐</td>
+            <td>2021-05-15</td>
+        </tr>
+        </tbody>
+    </table>
+    <ul>
+        <li><code>id</code> 是每个条目的唯一标识符，并作为主键。</li>
+        <li><code>code</code> 是理财产品的代码。</li>
+        <li><code>name</code> 是理财产品的名称。</li>
+        <li><code>category</code> 表示产品的类别。</li>
+        <li><code>issuer</code> 是发行机构。</li>
+        <li><code>raise_method</code> 是募集方式。</li>
+        <li><code>sales_area</code> 表示销售区域。</li>
+        <li><code>risk_level</code> 表示风险等级。</li>
+        <li><code>status</code> 表示产品状态。</li>
+        <li><code>net_value</code> 表示净值。</li>
+        <li><code>latest_tip</code> 表示最新提示。</li>
+        <li><code>details</code> 是关于产品的详细信息。</li>
+        <li><code>notice</code> 是相关通知。</li>
+        <li><code>time</code> 是数据记录的时间戳。</li>
+    </ul>
+    <h4 id="222-查询功能实现">2.2.2 查询功能实现 </h4>
+    <h5 id="查询功能-search-方法">查询功能 (<code>search</code> 方法) </h5>
+    <ol>
+        <li><strong>Vue 数据绑定：</strong> 在 HTML 中，通过 <code>v-model</code> 实现与 Vue 实例中
+            <code>selectedCategory</code> 和 <code>searchCode</code> 的双向数据绑定，分别表示选择的产品类别和输入的产品代码。
+        </li>
+        <li><strong>查询按钮：</strong> 当用户点击查询按钮时，触发 <code>search</code> 方法。</li>
+        <li><strong>查询逻辑：</strong> 在 <code>search</code> 方法中，通过 <code>console.log</code>
+            输出用户选择的产品类别和输入的产品代码，并使用 <code>filter</code> 函数对 <code>tableData</code>
+            进行过滤，筛选符合条件的数据，将结果存储在 <code>filteredData</code> 中。
+        </li>
+    </ol>
+    <pre data-role="codeBlock" data-info="js" class="language-javascript js"><code><span
+            class="token literal-property property">methods</span><span class="token operator">:</span> <span
+            class="token punctuation">{</span>
+    <span class="token function-variable function">search</span><span class="token operator">:</span> <span
+                class="token keyword keyword-function">function</span> <span class="token punctuation">(</span><span
+                class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 在这里添加查询逻辑  </span>
+        <span class="token console class-name">console</span><span class="token punctuation">.</span><span
+                class="token method function property-access">log</span><span class="token punctuation">(</span><span
+                class="token string">'查询产品类别:'</span><span class="token punctuation">,</span> <span
+                class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">selectedCategory</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+        <span class="token console class-name">console</span><span class="token punctuation">.</span><span
+                class="token method function property-access">log</span><span class="token punctuation">(</span><span
+                class="token string">'搜索产品代码:'</span><span class="token punctuation">,</span> <span
+                class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">searchCode</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+  
+        <span class="token comment">// 过滤数据  </span>
+        <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">filteredData</span> <span class="token operator">=</span> <span
+                class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">tableData</span><span class="token punctuation">.</span><span
+                class="token method function property-access">filter</span><span class="token punctuation">(</span><span
+                class="token parameter">item</span> <span class="token arrow operator">=&gt;</span>
+            <span class="token punctuation">(</span><span class="token operator">!</span><span
+                class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">selectedCategory</span> <span class="token operator">||</span> item<span
+                class="token punctuation">.</span><span class="token property-access">category</span> <span
+                class="token operator">===</span> <span class="token keyword keyword-this">this</span><span
+                class="token punctuation">.</span><span class="token property-access">selectedCategory</span><span
+                class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+            <span class="token punctuation">(</span><span class="token operator">!</span><span
+                class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">searchCode</span> <span class="token operator">||</span> item<span
+                class="token punctuation">.</span><span class="token property-access">code</span><span
+                class="token punctuation">.</span><span
+                class="token method function property-access">includes</span><span
+                class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span
+                class="token punctuation">.</span><span class="token property-access">searchCode</span><span
+                class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre>
+    <h5 id="重置功能-reset-方法">重置功能 (<code>reset</code> 方法) </h5>
+    <ol>
+        <li><strong>重置按钮：</strong> 当用户点击重置按钮时，触发 <code>reset</code> 方法。</li>
+        <li><strong>重置逻辑：</strong> 在 <code>reset</code> 方法中，重置 <code>selectedCategory</code> 和 <code>searchCode</code>，同时恢复显示所有数据到
+            <code>filteredData</code>。此外，对 <code>tableData</code> 进行分类，将数据按照产品类别存储到 <code>categoryData</code>
+            中。
+        </li>
+    </ol>
+    <pre data-role="codeBlock" data-info="js" class="language-javascript js"><code><span
+            class="token function-variable function">reset</span><span class="token operator">:</span> <span
+            class="token keyword keyword-function">function</span> <span class="token punctuation">(</span><span
+            class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 重置查询条件  </span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">selectedCategory</span> <span class="token operator">=</span> <span
+                class="token string">''</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">searchCode</span> <span class="token operator">=</span> <span
+                class="token string">''</span><span class="token punctuation">;</span>
+    <span class="token comment">// 恢复显示所有数据  </span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">filteredData</span> <span class="token operator">=</span> <span
+                class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">tableData</span><span class="token punctuation">;</span>
+    <span class="token comment">// 对tableData进行分类，然后存储到categoryData中  </span>
+    <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">categoryData</span> <span class="token operator">=</span> <span
+                class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span
+                class="token property-access">tableData</span><span class="token punctuation">.</span><span
+                class="token method function property-access">reduce</span><span class="token punctuation">(</span><span
+                class="token punctuation">(</span><span class="token parameter">acc<span
+                class="token punctuation">,</span> cur</span><span class="token punctuation">)</span> <span
+                class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword control-flow keyword-if">if</span> <span class="token punctuation">(</span><span
+                class="token operator">!</span>acc<span class="token punctuation">[</span>cur<span
+                class="token punctuation">.</span><span class="token property-access">category</span><span
+                class="token punctuation">]</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+            acc<span class="token punctuation">[</span>cur<span class="token punctuation">.</span><span
+                class="token property-access">category</span><span class="token punctuation">]</span> <span
+                class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span
+                class="token punctuation">;</span>
+        <span class="token punctuation">}</span>  
+        acc<span class="token punctuation">[</span>cur<span class="token punctuation">.</span><span
+                class="token property-access">category</span><span class="token punctuation">]</span><span
+                class="token punctuation">.</span><span class="token method function property-access">push</span><span
+                class="token punctuation">(</span>cur<span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+        <span class="token keyword control-flow keyword-return">return</span> acc<span
+                class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span
+                class="token punctuation">{</span><span class="token punctuation">}</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre>
+    <br>
+    <h4 id="223-页面展示">2.2.3 页面展示 </h4>
+    <p><img src="img/%E9%93%B6%E8%A1%8C%E7%90%86%E8%B4%A2.jpg" alt="jpg"></p>
+    <br>
+    <h3 id="23-理财公告-notice">2.3 理财公告 <code>notice</code></h3>
+    <h4 id="231-页面设计">2.3.1 页面设计 </h4>
+    <p>
+        使用了Vue.js框架。页面上包括一个顶部导航栏、一个公告列表和一个底部导航栏。顶部导航栏包括客服热线、登录/注册和退出登录按钮。公告列表显示了不同年份的公告。底部导航栏包括一些链接和版权信息。页面通过Ajax请求从服务器获取公告数据，并使用Vue.js的数据绑定功能动态更新页面。用户点击年份按钮时，会请求并显示对应年份的公告。</p>
+    <h4 id="232-页面展示">2.3.2 页面展示 </h4>
+    <p><img src="img/%E7%90%86%E8%B4%A2%E5%85%AC%E5%91%8A.jpg" alt="jpg"></p>
+    <hr>
+    <p><br><br><br></p>
+    <h2 id="3-逻辑处理">3. 逻辑处理 </h2>
+    <hr>
+    <p>主要介绍后端实现工具，实现方法等</p>
+    <p><img src="img/image_32.png" alt="png"></p>
+    <h3 id="31-allmysqljava">3.1. <code>AllMysql.java</code></h3>
+    <p>主要功能是与MySQL数据库进行交互，包括创建表、插入数据、更新数据等操作。</p>
+    <ol>
+        <li><strong>数据库表定义：</strong>
+            <ul>
+                <li>
+                    定义了四张表：<code>user</code>、<code>showdata</code>、<code>usershowdata</code>、<code>financingdata</code>。
+                </li>
+                <li>每张表都有特定的字段和约束，包括主键、数据类型等。</li>
+            </ul>
+        </li>
+        <li><strong>数据初始化：</strong>
+            <ul>
+                <li>提供了一些初始数据的插入操作，例如<code>insertFinancingDataNewTabel</code>和<code>insertShowDataNewTabel</code>方法，用于在表创建时插入一些初始数据。
+                </li>
+            </ul>
+        </li>
+        <li><strong>数据操作方法：</strong>
+            <ul>
+                <li>提供了一系列方法用于执行数据库操作，包括插入用户数据、更新用户数据、获取用户数据等。</li>
+                <li><code>updateUserTableOfMoney</code>方法用于更新用户表中的金额字段。</li>
+                <li><code>checkTable</code>方法用于检查表是否存在，如果不存在则创建表，并插入一些初始数据。</li>
+            </ul>
+        </li>
+        <li><strong>登录状态检查方法：</strong>
+            <ul>
+                <li>提供了<code>getLoginStatus</code>、<code>isCookieLogin</code>和<code>isSessionLogin</code>方法，用于检查用户的登录状态，从Cookie和Session中获取登录信息。
+                </li>
+            </ul>
+        </li>
+        <li><strong>获取数据方法：</strong>
+            <ul>
+                <li>提供了一些方法用于从数据库中获取数据，如<code>getShowData</code>方法用于获取展示数据，<code>getFinancingData</code>方法用于获取融资数据等。
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <br>
+    <h3 id="32-getfinancingdataservletjava">3.2 <code>GetFinancingDataServlet.java</code></h3>
+    <p>
+        这个函数是一个基于Servlet的Java程序，用于处理HTTP请求并返回相应的数据。它通过获取请求中的参数来确定返回的数据类型，并根据用户登录状态返回不同的结果。</p>
+    <pre data-role="codeBlock" data-info="java" class="language-java java"><code><span
+            class="token keyword keyword-public">public</span> <span
+            class="token keyword keyword-void">void</span> <span class="token function">doGet</span><span
+            class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span
+            class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> response<span
+            class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span
+            class="token class-name">IOException</span> <span class="token punctuation">{</span>
+  
+    <span class="token class-name">String</span> type <span class="token operator">=</span> request<span
+                class="token punctuation">.</span><span class="token function">getParameter</span><span
+                class="token punctuation">(</span><span class="token string">"type"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>type <span
+                class="token operator">==</span> <span class="token keyword keyword-null">null</span><span
+                class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span
+                class="token punctuation">.</span><span class="token function">println</span><span
+                class="token punctuation">(</span><span class="token string">"[argv] get financing data error, the type is null"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword keyword-return">return</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">}</span>  
+  
+    <span class="token class-name">JSONObject</span> loginData <span class="token operator">=</span> conn<span
+                class="token punctuation">.</span><span class="token function">getLoginStatus</span><span
+                class="token punctuation">(</span>request<span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+  
+    response<span class="token punctuation">.</span><span class="token function">setContentType</span><span
+                class="token punctuation">(</span><span class="token string">"application/json"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    response<span class="token punctuation">.</span><span class="token function">setCharacterEncoding</span><span
+                class="token punctuation">(</span><span class="token string">"UTF-8"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>loginData<span
+                class="token punctuation">.</span><span class="token function">getString</span><span
+                class="token punctuation">(</span><span class="token string">"isLogin"</span><span
+                class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span
+                class="token punctuation">(</span><span class="token string">"yes"</span><span
+                class="token punctuation">)</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+        <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>type<span
+                class="token punctuation">.</span><span class="token function">equals</span><span
+                class="token punctuation">(</span><span class="token string">"financing"</span><span
+                class="token punctuation">)</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+            response<span class="token punctuation">.</span><span class="token function">getWriter</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">.</span><span class="token function">write</span><span
+                class="token punctuation">(</span>conn<span class="token punctuation">.</span><span
+                class="token function">getFinancingData</span><span class="token punctuation">(</span><span
+                class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword keyword-else">else</span> <span
+                class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>type<span
+                class="token punctuation">.</span><span class="token function">equals</span><span
+                class="token punctuation">(</span><span class="token string">"year"</span><span
+                class="token punctuation">)</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+            response<span class="token punctuation">.</span><span class="token function">getWriter</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">.</span><span class="token function">write</span><span
+                class="token punctuation">(</span>conn<span class="token punctuation">.</span><span
+                class="token function">getYearGroupData</span><span class="token punctuation">(</span><span
+                class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword keyword-else">else</span> <span
+                class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>type<span
+                class="token punctuation">.</span><span class="token function">equals</span><span
+                class="token punctuation">(</span><span class="token string">"notice"</span><span
+                class="token punctuation">)</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+            <span class="token class-name">String</span> year <span class="token operator">=</span> request<span
+                class="token punctuation">.</span><span class="token function">getParameter</span><span
+                class="token punctuation">(</span><span class="token string">"year"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>year <span
+                class="token operator">==</span> <span class="token keyword keyword-null">null</span><span
+                class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span
+                class="token punctuation">.</span><span class="token function">println</span><span
+                class="token punctuation">(</span><span
+                class="token string">"[argv] get notice error, year is null"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword keyword-return">return</span><span class="token punctuation">;</span>  
+            <span class="token punctuation">}</span>  
+            response<span class="token punctuation">.</span><span class="token function">getWriter</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">.</span><span class="token function">write</span><span
+                class="token punctuation">(</span>conn<span class="token punctuation">.</span><span
+                class="token function">getNoticeData</span><span class="token punctuation">(</span>year<span
+                class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword keyword-else">else</span><span
+                class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span
+                class="token punctuation">.</span><span class="token function">println</span><span
+                class="token punctuation">(</span><span class="token string">"[argv] get financing data error, the type is not match"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword keyword-return">return</span><span class="token punctuation">;</span>  
+        <span class="token punctuation">}</span>  
+    <span class="token punctuation">}</span> <span class="token keyword keyword-else">else</span> <span
+                class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span
+                class="token punctuation">.</span><span class="token function">println</span><span
+                class="token punctuation">(</span><span class="token string">"[argv] get financing data error, the user is not login"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+</code></pre>
+    <p>这个Java函数是一个<code>HTTP
+        GET</code>请求的处理函数。首先从请求参数中获取<code>type</code>的值，然后根据不同的<code>type</code>值执行不同的操作，最后将结果以JSON格式返回给客户端。如果用户已登录，可以获取融资数据、年份数据或通知数据；如果用户未登录，则提示用户未登录。如果<code>type</code>值不符合要求，则提示类型不匹配。如果获取数据的参数不完整，则提示参数不完整。
+    </p>
+    <br>
+    <h3 id="33-htmlfilterjava">3.3 <code>HtmlFilter.java</code></h3>
+    <p>这个Java函数是一个基于Servlet的过滤器，用于拦截所有请求以<code>.html</code>结尾的URL。在过滤器中，可以进行拦截逻辑判断，例如重定向未登录用户到登录页面，或者根据实际需求限制访问某些页面。在示例中，如果请求路径以<code>.html</code>结尾，则会将用户重定向到其他页面。最后，通过调用FilterChain对象的<code>doFilter</code>方法，将请求和响应传递给下一个<code>Filter</code>或<code>Servlet</code>。
+    </p>
+    <pre data-role="codeBlock" data-info="java" class="language-java java"><code><span
+            class="token annotation punctuation">@WebFilter</span><span class="token punctuation">(</span><span
+            class="token string">"*.html"</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span
+                class="token class-name">HtmlFilter</span> <span
+                class="token keyword keyword-implements">implements</span> <span class="token class-name">Filter</span> <span
+                class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>  
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span
+                class="token function">doFilter</span><span class="token punctuation">(</span><span
+                class="token class-name">ServletRequest</span> servletRequest<span
+                class="token punctuation">,</span> <span class="token class-name">ServletResponse</span> servletResponse<span
+                class="token punctuation">,</span>
+    <span class="token class-name">FilterChain</span> filterChain<span class="token punctuation">)</span> <span
+                class="token keyword keyword-throws">throws</span> <span
+                class="token class-name">IOException</span><span class="token punctuation">,</span> <span
+                class="token class-name">ServletException</span> <span class="token punctuation">{</span>
+
+        <span class="token comment">// 在此处进行拦截逻辑判断  </span>
+        <span class="token comment">// 例如，如果用户未登录，可以重定向到登录页面，否则继续执行下一个Filter或Servlet  </span>
+        <span class="token comment">// 获取请求的资源路径  </span>
+        <span class="token class-name">String</span> requestURI <span class="token operator">=</span> <span
+                class="token punctuation">(</span><span class="token punctuation">(</span><span
+                class="token class-name">HttpServletRequest</span><span class="token punctuation">)</span> servletRequest<span
+                class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getRequestURI</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span
+                class="token punctuation">.</span><span class="token function">println</span><span
+                class="token punctuation">(</span><span class="token string">"html url:"</span> <span
+                class="token operator">+</span> requestURI<span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+  
+        <span class="token comment">// 这里简单地示例，如果请求路径以.html结尾，则重定向到其他页面，可以根据实际需求修改  </span>
+        <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>requestURI<span
+                class="token punctuation">.</span><span class="token function">endsWith</span><span
+                class="token punctuation">(</span><span class="token string">".html"</span><span
+                class="token punctuation">)</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+            <span class="token class-name">HttpServletResponse</span> httpResponse <span class="token operator">=</span> <span
+                class="token punctuation">(</span><span class="token class-name">HttpServletResponse</span><span
+                class="token punctuation">)</span> servletResponse<span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span
+                class="token punctuation">.</span><span class="token function">println</span><span
+                class="token punctuation">(</span><span class="token string">"[argv] the page is no access"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 如果没有拦截，继续执行下一个Filter或Servlet  </span>
+            httpResponse<span class="token punctuation">.</span><span class="token function">sendRedirect</span><span
+                class="token punctuation">(</span><span class="token string">"showData?page=404page"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword keyword-return">return</span><span class="token punctuation">;</span>  
+        <span class="token punctuation">}</span>  
+        filterChain<span class="token punctuation">.</span><span class="token function">doFilter</span><span
+                class="token punctuation">(</span>servletRequest<span class="token punctuation">,</span> servletResponse<span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+</code></pre>
+    <br>
+    <h3 id="34-loginregisterservletjava">3.4 <code>LoginRegisterServlet.java</code></h3>
+    <p>这是一个登录注册 servlet。<code>init()</code>方法用于建立数据库连接，<code>doPost()</code>方法用于处理<code>HTTP
+        POST</code>请求，根据请求中的<code>type</code>字段执行不同的操作，包括登录、注册和登出。根据操作结果，通过HTTP响应返回JSON格式的消息。
+    </p>
+    <br>
+    <h3 id="35-openatorshowdataservletjava">3.5 <code>OpenatorShowDataServlet.java</code></h3>
+    <p>
+        用于处理HTTP请求,它从请求中读取JSON格式的数据，然后与数据库中的数据进行交互。根据请求中的金额参数，它判断是否可以进行投资，并返回相应的结果。如果投资成功，则将金额插入到数据库中。函数使用了阿里巴巴的fastjson库来处理JSON数据，并使用了MySQL数据库进行交互。</p>
+    <pre data-role="codeBlock" data-info="java" class="language-java java"><code><span
+            class="token keyword keyword-public">public</span> <span
+            class="token keyword keyword-void">void</span> <span class="token function">doPost</span><span
+            class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span
+            class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> response<span
+            class="token punctuation">)</span> <span class="token keyword keyword-throws">throws</span> <span
+            class="token class-name">IOException</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 读取请求体  </span>
+    <span class="token class-name">BufferedReader</span> reader <span class="token operator">=</span> <span
+                class="token keyword keyword-new">new</span> <span class="token class-name">BufferedReader</span><span
+                class="token punctuation">(</span><span class="token keyword keyword-new">new</span> <span
+                class="token class-name">InputStreamReader</span><span class="token punctuation">(</span>request<span
+                class="token punctuation">.</span><span class="token function">getInputStream</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">)</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+    <span class="token class-name">StringBuilder</span> requestBody <span class="token operator">=</span> <span
+                class="token keyword keyword-new">new</span> <span class="token class-name">StringBuilder</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+    <span class="token class-name">String</span> line<span class="token punctuation">;</span>  
+    <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span
+                class="token punctuation">(</span>line <span class="token operator">=</span> reader<span
+                class="token punctuation">.</span><span class="token function">readLine</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">)</span> <span class="token operator">!=</span> <span
+                class="token keyword keyword-null">null</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+        requestBody<span class="token punctuation">.</span><span class="token function">append</span><span
+                class="token punctuation">(</span>line<span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+    <span class="token punctuation">}</span>  
+  
+    <span class="token comment">// 将请求体解析为JSON对象  </span>
+    <span class="token class-name">String</span> jsonString <span class="token operator">=</span> requestBody<span
+                class="token punctuation">.</span><span class="token function">toString</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+    <span class="token class-name">JSONObject</span> jsonObject <span class="token operator">=</span> <span
+                class="token class-name">JSONObject</span><span class="token punctuation">.</span><span
+                class="token function">parseObject</span><span class="token punctuation">(</span>jsonString<span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>jsonObject <span
+                class="token operator">==</span> <span class="token keyword keyword-null">null</span><span
+                class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span
+                class="token punctuation">.</span><span class="token function">println</span><span
+                class="token punctuation">(</span><span class="token string">"[argv op] parse json error"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword keyword-return">return</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">}</span>  
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>jsonObject<span
+                class="token punctuation">.</span><span class="token function">getString</span><span
+                class="token punctuation">(</span><span class="token string">"money"</span><span
+                class="token punctuation">)</span> <span class="token operator">==</span> <span
+                class="token keyword keyword-null">null</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span
+                class="token punctuation">.</span><span class="token function">println</span><span
+                class="token punctuation">(</span><span class="token string">"[argv op] username or name is null"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword keyword-return">return</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">}</span>  
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>jsonObject<span
+                class="token punctuation">.</span><span class="token function">getString</span><span
+                class="token punctuation">(</span><span class="token string">"money"</span><span
+                class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isEmpty</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span
+                class="token punctuation">.</span><span class="token function">println</span><span
+                class="token punctuation">(</span><span class="token string">"[argv op] username or name is null"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword keyword-return">return</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">}</span>  
+  
+    <span class="token class-name">JSONObject</span> loginStatus <span class="token operator">=</span> conn<span
+                class="token punctuation">.</span><span class="token function">getLoginStatus</span><span
+                class="token punctuation">(</span>request<span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+  
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>loginStatus<span
+                class="token punctuation">.</span><span class="token function">getString</span><span
+                class="token punctuation">(</span><span class="token string">"isLogin"</span><span
+                class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span
+                class="token punctuation">(</span><span class="token string">"no"</span><span class="token punctuation">)</span><span
+                class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span
+                class="token punctuation">.</span><span class="token function">println</span><span
+                class="token punctuation">(</span><span class="token string">"[argv op] is no login"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword keyword-return">return</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">}</span>  
+  
+    <span class="token class-name">String</span> name <span class="token operator">=</span> <span class="token string">"安富 200110期"</span><span
+                class="token punctuation">;</span>
+    <span class="token class-name">String</span> username <span class="token operator">=</span> loginStatus<span
+                class="token punctuation">.</span><span class="token function">getString</span><span
+                class="token punctuation">(</span><span class="token string">"username"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">String</span> money <span class="token operator">=</span> jsonObject<span
+                class="token punctuation">.</span><span class="token function">getString</span><span
+                class="token punctuation">(</span><span class="token string">"money"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+    <span class="token class-name">JSONObject</span> preData <span class="token operator">=</span> conn<span
+                class="token punctuation">.</span><span class="token function">getShowData</span><span
+                class="token punctuation">(</span>name<span class="token punctuation">,</span> username<span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">JSONObject</span> ret <span class="token operator">=</span> <span
+                class="token keyword keyword-new">new</span> <span class="token class-name">JSONObject</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+  
+    <span class="token keyword keyword-double">double</span> newMoney <span class="token operator">=</span> <span
+                class="token class-name">Double</span><span class="token punctuation">.</span><span
+                class="token function">parseDouble</span><span class="token punctuation">(</span>money<span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">SimpleDateFormat</span> sdf <span class="token operator">=</span> <span
+                class="token keyword keyword-new">new</span> <span class="token class-name">SimpleDateFormat</span><span
+                class="token punctuation">(</span><span class="token string">"yyyy-MM-dd HH:mm:ss"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Date</span> date <span class="token operator">=</span> <span
+                class="token keyword keyword-null">null</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-try">try</span> <span class="token punctuation">{</span>  
+        date <span class="token operator">=</span> sdf<span class="token punctuation">.</span><span
+                class="token function">parse</span><span class="token punctuation">(</span>preData<span
+                class="token punctuation">.</span><span class="token function">getString</span><span
+                class="token punctuation">(</span><span class="token string">"endtime"</span><span
+                class="token punctuation">)</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword keyword-catch">catch</span> <span
+                class="token punctuation">(</span><span class="token class-name">ParseException</span> e<span
+                class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-throw">throw</span> <span class="token keyword keyword-new">new</span> <span
+                class="token class-name">RuntimeException</span><span class="token punctuation">(</span>e<span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>  
+  
+    <span class="token keyword keyword-long">long</span> timestamp <span class="token operator">=</span> date<span
+                class="token punctuation">.</span><span class="token function">getTime</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+  
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>newMoney <span
+                class="token operator">&lt;</span> <span class="token class-name">Double</span><span
+                class="token punctuation">.</span><span class="token function">parseDouble</span><span
+                class="token punctuation">(</span>preData<span class="token punctuation">.</span><span
+                class="token function">getString</span><span class="token punctuation">(</span><span
+                class="token string">"startmoney"</span><span class="token punctuation">)</span><span
+                class="token punctuation">)</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span
+                class="token punctuation">.</span><span class="token function">println</span><span
+                class="token punctuation">(</span><span
+                class="token string">"[argv op] money &lt; startmoney"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+        ret<span class="token punctuation">.</span><span class="token function">put</span><span
+                class="token punctuation">(</span><span class="token string">"message"</span><span
+                class="token punctuation">,</span> <span class="token string">"金额小于可投起始金额"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword keyword-else">else</span> <span
+                class="token keyword keyword-if">if</span> <span class="token punctuation">(</span><span
+                class="token punctuation">(</span><span class="token class-name">Double</span><span
+                class="token punctuation">.</span><span class="token function">parseDouble</span><span
+                class="token punctuation">(</span>preData<span class="token punctuation">.</span><span
+                class="token function">getString</span><span class="token punctuation">(</span><span
+                class="token string">"summoney"</span><span class="token punctuation">)</span><span
+                class="token punctuation">)</span> <span class="token operator">-</span>
+    <span class="token class-name">Double</span><span class="token punctuation">.</span><span class="token function">parseDouble</span><span
+                class="token punctuation">(</span>preData<span class="token punctuation">.</span><span
+                class="token function">getString</span><span class="token punctuation">(</span><span
+                class="token string">"havemoney"</span><span class="token punctuation">)</span><span
+                class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> newMoney <span
+                class="token operator">&lt;</span> <span class="token number">0</span><span
+                class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span
+                class="token punctuation">.</span><span class="token function">println</span><span
+                class="token punctuation">(</span><span
+                class="token string">"[argv op] endmoney - money &lt; 0"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+        ret<span class="token punctuation">.</span><span class="token function">put</span><span
+                class="token punctuation">(</span><span class="token string">"message"</span><span
+                class="token punctuation">,</span> <span class="token string">"金额大于可投剩余金额"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword keyword-else">else</span> <span
+                class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>newMoney <span
+                class="token operator">&gt;</span> <span class="token class-name">Double</span><span
+                class="token punctuation">.</span><span class="token function">parseDouble</span><span
+                class="token punctuation">(</span>preData<span class="token punctuation">.</span><span
+                class="token function">getString</span><span class="token punctuation">(</span><span
+                class="token string">"usermoney"</span><span class="token punctuation">)</span><span
+                class="token punctuation">)</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span
+                class="token punctuation">.</span><span class="token function">println</span><span
+                class="token punctuation">(</span><span
+                class="token string">"[argv op] money &gt; usermoney"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+        ret<span class="token punctuation">.</span><span class="token function">put</span><span
+                class="token punctuation">(</span><span class="token string">"message"</span><span
+                class="token punctuation">,</span> <span class="token string">"金额大于用户账户余额"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword keyword-else">else</span> <span
+                class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>timestamp <span
+                class="token operator">&lt;</span> <span class="token class-name">System</span><span
+                class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span
+                class="token punctuation">.</span><span class="token function">println</span><span
+                class="token punctuation">(</span><span class="token string">"[argv op] endtime &lt; now"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+        ret<span class="token punctuation">.</span><span class="token function">put</span><span
+                class="token punctuation">(</span><span class="token string">"message"</span><span
+                class="token punctuation">,</span> <span class="token string">"已截止"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword keyword-else">else</span> <span
+                class="token punctuation">{</span>
+        conn<span class="token punctuation">.</span><span
+                class="token function">insertOrUpdateUserShowDataTable</span><span class="token punctuation">(</span>username<span
+                class="token punctuation">,</span> name<span class="token punctuation">,</span> money<span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+        ret<span class="token punctuation">.</span><span class="token function">put</span><span
+                class="token punctuation">(</span><span class="token string">"message"</span><span
+                class="token punctuation">,</span> <span class="token string">"投资成功"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>  
+  
+    response<span class="token punctuation">.</span><span class="token function">setContentType</span><span
+                class="token punctuation">(</span><span class="token string">"application/json"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    response<span class="token punctuation">.</span><span class="token function">setCharacterEncoding</span><span
+                class="token punctuation">(</span><span class="token string">"UTF-8"</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+    response<span class="token punctuation">.</span><span class="token function">getWriter</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">.</span><span class="token function">write</span><span
+                class="token punctuation">(</span>ret<span class="token punctuation">.</span><span
+                class="token function">toJSONString</span><span class="token punctuation">(</span><span
+                class="token punctuation">)</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    <p>这个函数是一个Java Servlet的<code>doPost</code>方法，用于处理<code>HTTP POST</code>请求。函数首先读取请求体，并将其解析为JSON对象。然后根据JSON对象中的<code>money</code>字段执行一系列条件判断，并与数据库进行交互,最后函数将处理结果以JSON格式返回给客户端。
+    </p>
+    <br>
+    <h3 id="36-showdataservletjava">3.6 <code>ShowDataServlet.java</code></h3>
+    <p>
+        功能是展示数据。通过HTTP请求接收数据，将数据以JSON格式返回。函数还包括对用户登录状态的判断，如果用户未登录，则重定向到登录页面。</p>
+</div>
+</body>
+</html>
